@@ -36,6 +36,12 @@ protected:
 private:
 	UPROPERTY(EditAnywhere, Category = Utility)
 	class UFloatingPawnMovement* FloatingPawnMovement;
+	
+	UPROPERTY(EditAnywhere, Category = Utility)
+	class USpringArmComponent* SpringArmComponent;
+
+	UPROPERTY(EditAnywhere, Category = Utility)
+	class UCameraComponent* CameraComponent;
 
 	UPROPERTY(EditAnywhere, Category = Collision)
 	class UCapsuleComponent* CapsuleComponent;

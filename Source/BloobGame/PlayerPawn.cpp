@@ -6,7 +6,9 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Camera/CameraComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
+#include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
 APlayerPawn::APlayerPawn()
@@ -18,6 +20,12 @@ APlayerPawn::APlayerPawn()
 
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Component"));
 	RootComponent = CapsuleComponent;
+
+	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
+	SpringArmComponent->SetupAttachment(CapsuleComponent);
+
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	CameraComponent->SetupAttachment(SpringArmComponent);
 
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	BaseMesh->SetupAttachment(CapsuleComponent);
@@ -55,7 +63,7 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 void APlayerPawn::Move(const FInputActionValue& Value)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Move"));
+	
 	FVector2D MovementVector = Value.Get<FVector2D>();
 
 	if (Controller != nullptr)
