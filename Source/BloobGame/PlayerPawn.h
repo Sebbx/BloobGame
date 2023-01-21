@@ -18,7 +18,24 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	class UInputMappingContext* DefaultMappingContext;
 
 	UPROPERTY(EditAnywhere, Category = Input)
-	class UInputAction* MoveAction;
+	class UInputAction* IAMove;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug1;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug2;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug3;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug4;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug5;
+
+	
 	
 
 public:
@@ -32,6 +49,13 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void Move(const FInputActionValue& Value);
+	
+	void Debug1(const FInputActionValue& Value);
+	void Debug2(const FInputActionValue& Value);
+	void Debug3(const FInputActionValue& Value);
+	void Debug4(const FInputActionValue& Value);
+	void Debug5(const FInputActionValue& Value);
+	
 
 private:
 	UPROPERTY(EditAnywhere, Category = Utility)
@@ -49,8 +73,16 @@ private:
 	UPROPERTY(EditAnywhere, Category = Meshes)
 	class UStaticMeshComponent* BaseMesh;
 
+
+	void HandleHealth();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere, Category = Health)
+	float MaxHealthPoints;
+	
+	float HealthPoints;
 
 };

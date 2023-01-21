@@ -29,12 +29,15 @@ APlayerPawn::APlayerPawn()
 
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	BaseMesh->SetupAttachment(CapsuleComponent);
+
+	
 }
 
 // Called when the game starts or when spawned
 void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
+	HealthPoints = MaxHealthPoints;
 
 	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
 	{
@@ -48,6 +51,26 @@ void APlayerPawn::BeginPlay()
 	}
 }
 
+// Called every frame
+void APlayerPawn::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	HandleHealth();
+
+}
+
+void APlayerPawn::HandleHealth()
+{
+	UE_LOG(LogTemp, Display, TEXT("%f"), HealthPoints);
+	if (HealthPoints <= 0)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, (TEXT("U DED")));
+		
+		//TODO Death procedure
+	}
+}
+
+// ****************** INPUT ******************
 
 // Called to bind functionality to input
 void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -56,7 +79,13 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
 	{
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &APlayerPawn::Move);
+		EnhancedInputComponent->BindAction(IAMove, ETriggerEvent::Triggered, this, &APlayerPawn::Move);
+		EnhancedInputComponent->BindAction(IADebug1, ETriggerEvent::Started, this, &APlayerPawn::Debug1);
+		EnhancedInputComponent->BindAction(IADebug2, ETriggerEvent::Started, this, &APlayerPawn::Debug2);
+		EnhancedInputComponent->BindAction(IADebug3, ETriggerEvent::Started, this, &APlayerPawn::Debug3);
+		EnhancedInputComponent->BindAction(IADebug4, ETriggerEvent::Started, this, &APlayerPawn::Debug4);
+		EnhancedInputComponent->BindAction(IADebug5, ETriggerEvent::Started, this, &APlayerPawn::Debug5);
+		
 	}
 	
 }
@@ -85,9 +114,29 @@ void APlayerPawn::Move(const FInputActionValue& Value)
 		
 }
 
-// Called every frame
-void APlayerPawn::Tick(float DeltaTime)
+void APlayerPawn::Debug1(const FInputActionValue& Value)
 {
-	Super::Tick(DeltaTime);
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 1")));
 
+	HealthPoints--;
+}
+
+void APlayerPawn::Debug2(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 2")));
+}
+
+void APlayerPawn::Debug3(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 3")));
+}
+
+void APlayerPawn::Debug4(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 4")));
+}
+
+void APlayerPawn::Debug5(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 5")));
 }

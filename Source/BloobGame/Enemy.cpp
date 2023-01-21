@@ -21,8 +21,8 @@ AEnemy::AEnemy()
 void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
-	location = FVector(1,2,3);
 	
+	playerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 }
 
 // Called every frame
@@ -30,10 +30,9 @@ void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	AAIController* AIController = Cast<AAIController>(GetController());
-	AIController->MoveToLocation(location);
+	AIController->MoveToLocation(playerPawn->GetActorLocation(), acceptableRadius);
 	
-	FVector PlayerLocation = UGameplayStatics::GetPlayerPawn(GetWorld(), 0)->GetActorLocation();
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, (TEXT("%s"), *PlayerLocation.ToString()));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, (TEXT("%s"), *PlayerLocation.ToString()));
 	//controler->MoveToLocation(location);
 
 }

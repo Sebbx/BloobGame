@@ -28,4 +28,9 @@ public:
 
 private:
 	FVector location;
+
+	UPROPERTY(EditAnywhere)
+	float acceptableRadius;
+
+	APawn* playerPawn;
 };
