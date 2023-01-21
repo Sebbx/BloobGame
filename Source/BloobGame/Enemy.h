@@ -19,6 +19,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void HandleAttack();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -27,10 +29,13 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	FVector location;
+	APawn* PlayerPawn;
+	bool CanAttack = true;
+	
+	UPROPERTY(EditAnywhere)
+	float AcceptableRadius;
 
 	UPROPERTY(EditAnywhere)
-	float acceptableRadius;
+	float AttackSpeed;
 
-	APawn* playerPawn;
 };

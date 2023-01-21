@@ -22,19 +22,28 @@ void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	playerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 }
 
 // Called every frame
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	AAIController* AIController = Cast<AAIController>(GetController());
-	AIController->MoveToLocation(playerPawn->GetActorLocation(), acceptableRadius);
 	
-	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, (TEXT("%s"), *PlayerLocation.ToString()));
-	//controler->MoveToLocation(location);
+	AAIController* AIController = Cast<AAIController>(GetController());
+	AIController->MoveToLocation(PlayerPawn->GetActorLocation(), AcceptableRadius);
+	
+	HandleAttack();
 
+}
+
+void AEnemy::HandleAttack()
+{
+	//TODO Attacking
+	if (IsOverlappingActor(PlayerPawn))
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 0.3f, FColor::Yellow, (TEXT("Overlapping")));
+	}
 }
 
 // Called to bind functionality to input
