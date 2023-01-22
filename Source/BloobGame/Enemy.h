@@ -11,6 +11,9 @@ class BLOOBGAME_API AEnemy : public ACharacter
 {
 	GENERATED_BODY()
 
+
+	
+
 public:
 	// Sets default values for this character's properties
 	AEnemy();
@@ -25,8 +28,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere, Category = Meshes)
+	class UStaticMeshComponent* BaseMesh;
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	class UCapsuleComponent* CapsuleComponent;
 
 private:
 	APawn* PlayerPawn;
@@ -37,5 +45,17 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float AttackSpeed;
+
+	UPROPERTY(EditAnywhere)
+	float Damage = 1;
+
+	UPROPERTY(EditAnywhere)
+	float ReloadTime = 2;
+
+	
+
+	FTimerHandle TimerHandle;
+
+	void Reload();
 
 };

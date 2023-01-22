@@ -8,6 +8,7 @@
 #include "EnhancedInputComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
+#include "TimerManager.h"
 #include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
@@ -29,7 +30,6 @@ APlayerPawn::APlayerPawn()
 
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	BaseMesh->SetupAttachment(CapsuleComponent);
-
 	
 }
 
@@ -39,6 +39,9 @@ void APlayerPawn::BeginPlay()
 	Super::BeginPlay();
 	HealthPoints = MaxHealthPoints;
 
+	
+	//GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &APlayerPawn::Reload(), 1.f, false);
+	
 	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
 	{
 		{
@@ -49,6 +52,8 @@ void APlayerPawn::BeginPlay()
 			}
 		}
 	}
+
+	
 }
 
 // Called every frame
@@ -59,9 +64,10 @@ void APlayerPawn::Tick(float DeltaTime)
 
 }
 
+
+
 void APlayerPawn::HandleHealth()
 {
-	UE_LOG(LogTemp, Display, TEXT("%f"), HealthPoints);
 	if (HealthPoints <= 0)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, (TEXT("U DED")));

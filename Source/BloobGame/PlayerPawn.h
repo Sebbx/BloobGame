@@ -73,7 +73,7 @@ private:
 	UPROPERTY(EditAnywhere, Category = Meshes)
 	class UStaticMeshComponent* BaseMesh;
 
-
+	
 	void HandleHealth();
 
 public:	
