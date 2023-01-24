@@ -11,6 +11,7 @@
 UCannonWeaponGear::UCannonWeaponGear()
 {
 	PrimaryComponentTick.bCanEverTick = true;
+
 }
 
 void UCannonWeaponGear::BeginPlay()
@@ -24,6 +25,9 @@ void UCannonWeaponGear::TickComponent(float DeltaTime, ELevelTick TickType,
 	FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	ProjectileSpawnLocation = GetOwner()->GetActorLocation();
+	AimAtNearestEnemy();
 }
 
 void UCannonWeaponGear::Shoot()
@@ -32,7 +36,26 @@ void UCannonWeaponGear::Shoot()
 
 	if(ProjectileClass)
 	{
-		GetWorld()->SpawnActor<AProjectile>(Cast<UClass>(ProjectileClass), GetOwner()->GetTransform());
+		GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnLocation, ProjectileSpawnRotation);
 	}
+
 	
+}
+
+void UCannonWeaponGear::AimAtNearestEnemy()
+{
+	TSubclassOf<AEnemy> ClassToFind;
+	ClassToFind = AEnemy::StaticClass();
+	TArray<AActor*> OutActors;
+	
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ClassToFind, OutActors);
+
+	if(!OutActors.IsEmpty())
+	{
+		float Distance;
+		AActor* NearestEnemy = UGameplayStatics::FindNearestActor(ProjectileSpawnLocation, OutActors, Distance);
+		UE_LOG(LogTemp, Warning, TEXT("%f"), Distance);
+
+		//todo aiming xd
+	}
 }

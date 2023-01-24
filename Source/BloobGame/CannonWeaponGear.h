@@ -15,7 +15,7 @@ class BLOOBGAME_API UCannonWeaponGear : public UGear
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, Category = Gear)
-	class AProjectile* ProjectileClass;
+	TSubclassOf<class AProjectile> ProjectileClass;
 
 	FActorSpawnParameters ProjectileSpawnParameters;
 
@@ -32,11 +32,18 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	
 private:
+
+	UPROPERTY(EditAnywhere, Category = Gear)
+	float ProjectileSpawnZOffset = -10;
+	
 	FTimerHandle TimerHandle;
+	
 	float FireRate = 1;
+	FVector ProjectileSpawnLocation;
+	FRotator ProjectileSpawnRotation = FRotator::ZeroRotator;
 	
 	void Shoot();
-
+	void AimAtNearestEnemy();
 	
 	
 };

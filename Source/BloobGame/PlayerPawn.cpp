@@ -4,6 +4,7 @@
 #include "PlayerPawn.h"
 
 #include "CannonWeaponGear.h"
+#include "Enemy.h"
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
@@ -12,6 +13,7 @@
 #include "GameFramework/FloatingPawnMovement.h"
 #include "TimerManager.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 APlayerPawn::APlayerPawn()
@@ -62,6 +64,7 @@ void APlayerPawn::BeginPlay()
 void APlayerPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
 }
 
 
