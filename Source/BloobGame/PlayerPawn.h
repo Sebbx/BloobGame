@@ -35,6 +35,28 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputAction* IADebug5;
 
+	UPROPERTY(EditAnywhere, Category = Components)
+	class UFloatingPawnMovement* FloatingPawnMovement;
+
+	UPROPERTY(EditAnywhere, Category = Components)
+	class UHealthComponent* HealthComponent;
+	
+	UPROPERTY(EditAnywhere, Category = Components)
+	class USpringArmComponent* SpringArmComponent;
+
+	UPROPERTY(EditAnywhere, Category = Components)
+	class UCameraComponent* CameraComponent;
+
+	UPROPERTY(EditAnywhere, Category = Collision)
+	class UCapsuleComponent* CapsuleComponent;
+
+	UPROPERTY(EditAnywhere, Category = Meshes)
+	class UStaticMeshComponent* BaseMesh;
+
+	UPROPERTY(EditAnywhere, Category = Gear)
+	class UCannonWeaponGear* Cannon;
+
+
 	
 	
 
@@ -58,31 +80,9 @@ protected:
 	
 
 private:
-	UPROPERTY(EditAnywhere, Category = Utility)
-	class UFloatingPawnMovement* FloatingPawnMovement;
-	
-	UPROPERTY(EditAnywhere, Category = Utility)
-	class USpringArmComponent* SpringArmComponent;
 
-	UPROPERTY(EditAnywhere, Category = Utility)
-	class UCameraComponent* CameraComponent;
-
-	UPROPERTY(EditAnywhere, Category = Collision)
-	class UCapsuleComponent* CapsuleComponent;
-
-	UPROPERTY(EditAnywhere, Category = Meshes)
-	class UStaticMeshComponent* BaseMesh;
-
-	
-	void HandleHealth();
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	UPROPERTY(EditAnywhere, Category = Health)
-	float MaxHealthPoints;
-	
-	float HealthPoints;
-
 };

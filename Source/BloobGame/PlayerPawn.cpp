@@ -3,9 +3,11 @@
 
 #include "PlayerPawn.h"
 
+#include "CannonWeaponGear.h"
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "HealthComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
 #include "TimerManager.h"
@@ -16,7 +18,9 @@ APlayerPawn::APlayerPawn()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
+		
 	FloatingPawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Floating"));
 
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Component"));
@@ -30,6 +34,8 @@ APlayerPawn::APlayerPawn()
 
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	BaseMesh->SetupAttachment(CapsuleComponent);
+
+	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
 	
 }
 
@@ -37,8 +43,6 @@ APlayerPawn::APlayerPawn()
 void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	HealthPoints = MaxHealthPoints;
-
 	
 	//GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &APlayerPawn::Reload(), 1.f, false);
 	
@@ -48,33 +52,18 @@ void APlayerPawn::BeginPlay()
 			if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 			{
 				Subsystem->AddMappingContext(DefaultMappingContext, 0);
-				
 			}
 		}
 	}
 
-	
 }
 
 // Called every frame
 void APlayerPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	HandleHealth();
-
 }
 
-
-
-void APlayerPawn::HandleHealth()
-{
-	if (HealthPoints <= 0)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, (TEXT("U DED")));
-		
-		//TODO Death procedure
-	}
-}
 
 // ****************** INPUT ******************
 
@@ -124,7 +113,6 @@ void APlayerPawn::Debug1(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 1")));
 
-	HealthPoints--;
 }
 
 void APlayerPawn::Debug2(const FInputActionValue& Value)

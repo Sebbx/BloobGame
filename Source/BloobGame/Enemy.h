@@ -44,9 +44,6 @@ private:
 	float AcceptableRadius;
 
 	UPROPERTY(EditAnywhere)
-	float AttackSpeed;
-
-	UPROPERTY(EditAnywhere)
 	float Damage = 1;
 
 	UPROPERTY(EditAnywhere)

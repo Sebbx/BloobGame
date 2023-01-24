@@ -7,14 +7,12 @@
   <component name="ChangeListManager">
     <list default="true" id="96503929-c297-4145-85ba-5c6fdb9a449e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobe.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Blueprints/Blueprint_CeilingLight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Blueprints/Blueprint_CeilingLight.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Particles/P_Ambient_Dust.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Particles/P_Ambient_Dust.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/2/87/IQLMBCCA3HPBJOYFUT00M8.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/3/AL/1T90B9S24IQ1HEORFFE9YL.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Enemy.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/A/3K/SOI411JF6GOQG73V8U9B2V.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/A/3K/SOI411JF6GOQG73V8U9B2V.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BloobGame/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Enemy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/HealthComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/HealthComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.h" afterDir="false" />
     </list>
@@ -182,6 +180,7 @@
       <workItem from="1674247697036" duration="2628000" />
       <workItem from="1674304118149" duration="5501000" />
       <workItem from="1674403407548" duration="16679000" />
+      <workItem from="1674590890169" duration="6984000" />
     </task>
     <servers />
   </component>

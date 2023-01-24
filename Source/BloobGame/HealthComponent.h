@@ -16,6 +16,10 @@ public:
 	// Sets default values for this component's properties
 	UHealthComponent();
 
+	UPROPERTY(EditAnywhere)
+	float MaxHealth = 100.f;
+	float Health = 0.f;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -24,14 +28,11 @@ private:
 
 	FTimerHandle InputTimerHandle;
 
-	UPROPERTY(EditAnywhere)
-	float MaxHealth = 100.f;
-	float Health = 0.f;
+
 
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* Insigator, AActor* DamageCauser);
 
-	void Reload();
 
 public:	
 	// Called every frame
