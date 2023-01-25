@@ -6,6 +6,7 @@
 #include "Enemy.h"
 #include "Projectile.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "GameFramework/Actor.h"
 
 UCannonWeaponGear::UCannonWeaponGear()
@@ -32,8 +33,6 @@ void UCannonWeaponGear::TickComponent(float DeltaTime, ELevelTick TickType,
 
 void UCannonWeaponGear::Shoot()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Blue, (TEXT("Shooting")));
-
 	if(ProjectileClass)
 	{
 		GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnLocation, ProjectileSpawnRotation);
@@ -44,18 +43,13 @@ void UCannonWeaponGear::Shoot()
 
 void UCannonWeaponGear::AimAtNearestEnemy()
 {
-	TSubclassOf<AEnemy> ClassToFind;
-	ClassToFind = AEnemy::StaticClass();
 	TArray<AActor*> OutActors;
-	
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ClassToFind, OutActors);
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEnemy::StaticClass(), OutActors);
 
 	if(!OutActors.IsEmpty())
 	{
 		float Distance;
-		AActor* NearestEnemy = UGameplayStatics::FindNearestActor(ProjectileSpawnLocation, OutActors, Distance);
-		UE_LOG(LogTemp, Warning, TEXT("%f"), Distance);
-
-		//todo aiming xd
+		ProjectileSpawnRotation = UKismetMathLibrary::FindLookAtRotation(ProjectileSpawnLocation,
+			UGameplayStatics::FindNearestActor(ProjectileSpawnLocation, OutActors, Distance)->GetActorLocation());
 	}
 }

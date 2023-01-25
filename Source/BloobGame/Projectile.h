@@ -13,6 +13,9 @@ class BLOOBGAME_API AProjectile : public AActor
 	
 	UPROPERTY(EditAnywhere, Category = Meshes)
 	class UStaticMeshComponent* BaseMesh;
+
+	UPROPERTY(EditAnywhere, Category = Features)
+	class UProjectileMovementComponent* ProjectileMovementComponent;
 	
 public:	
 	// Sets default values for this actor's properties

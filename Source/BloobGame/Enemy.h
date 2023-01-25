@@ -11,9 +11,6 @@ class BLOOBGAME_API AEnemy : public ACharacter
 {
 	GENERATED_BODY()
 
-
-	
-
 public:
 	// Sets default values for this character's properties
 	AEnemy();
