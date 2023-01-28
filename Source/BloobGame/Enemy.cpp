@@ -5,6 +5,7 @@
 #include "AIController.h"
 #include "AIHelpers.h"
 #include "EnemyAIController.h"
+#include "HealthComponent.h"
 #include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -19,6 +20,8 @@ AEnemy::AEnemy()
 	
 	
 	CapsuleComponent = GetCapsuleComponent();
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
+	
 
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	BaseMesh->SetupAttachment(CapsuleComponent);
@@ -52,7 +55,6 @@ void AEnemy::HandleAttack()
 	//TODO Attacking
 	if (IsOverlappingActor(PlayerPawn) && CanAttack)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, (TEXT("Enemy Handle Attack Executing")));
 		UGameplayStatics::ApplyDamage(PlayerPawn, Damage, GetOwner()->GetInstigatorController(), this, DamageTypeClass);
 		CanAttack = false;
 
@@ -69,7 +71,6 @@ void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AEnemy::Reload()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, (TEXT("Reloading")));
 	CanAttack = true;
 	GetWorldTimerManager().ClearTimer(TimerHandle);
 }

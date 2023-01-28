@@ -23,6 +23,9 @@ public:
 	// Sets default values for this component's properties
 	UCannonWeaponGear();
 
+	int Penetration;
+	float Damage;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

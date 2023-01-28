@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Projectile.generated.h"
 
+class UCannonWeaponGear;
 UCLASS()
 class BLOOBGAME_API AProjectile : public AActor
 {
@@ -16,6 +17,16 @@ class BLOOBGAME_API AProjectile : public AActor
 
 	UPROPERTY(EditAnywhere, Category = Features)
 	class UProjectileMovementComponent* ProjectileMovementComponent;
+
+	FTimerHandle TimerHandle;
+	float TimeToDestroy = 2;
+
+	void DestroyProjectile();
+
+	UFUNCTION()
+	void OnCollisionBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& Hit);
+
+	
 	
 public:	
 	// Sets default values for this actor's properties
@@ -28,5 +39,11 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+private:
+	UCannonWeaponGear* WeaponGear;
+	
+	int Penetration = 1;
+	float Damage = 1;
 
 };

@@ -11,6 +11,11 @@ class BLOOBGAME_API AEnemy : public ACharacter
 {
 	GENERATED_BODY()
 
+	UPROPERTY(EditAnywhere, Category = Components)
+	class UHealthComponent* HealthComponent;
+
+	class UCapsuleComponent* CapsuleComponent;
+
 public:
 	// Sets default values for this character's properties
 	AEnemy();
@@ -30,8 +35,6 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	class UCapsuleComponent* CapsuleComponent;
 
 private:
 	APawn* PlayerPawn;

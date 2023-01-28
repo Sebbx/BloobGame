@@ -13,6 +13,7 @@ UCannonWeaponGear::UCannonWeaponGear()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 
+	
 }
 
 void UCannonWeaponGear::BeginPlay()
@@ -20,6 +21,9 @@ void UCannonWeaponGear::BeginPlay()
 	Super::BeginPlay();
 
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UCannonWeaponGear::Shoot, FireRate, true, 0.f);
+	
+	Penetration = 2;
+	Damage = 2;
 }
 
 void UCannonWeaponGear::TickComponent(float DeltaTime, ELevelTick TickType,
