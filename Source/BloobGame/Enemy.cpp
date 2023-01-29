@@ -60,6 +60,8 @@ void AEnemy::HandleAttack()
 
 		GetWorldTimerManager().SetTimer(TimerHandle, this, &AEnemy::Reload, 1.f, false, ReloadTime);
 	}
+	auto Compi = Cast<UHealthComponent>( GetComponentByClass(UHealthComponent::StaticClass()));
+	UE_LOG(LogTemp, Warning, TEXT("%f"), Compi->Health);
 }
 
 // Called to bind functionality to input

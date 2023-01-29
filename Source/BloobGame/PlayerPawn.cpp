@@ -4,6 +4,7 @@
 #include "PlayerPawn.h"
 
 #include "CannonWeaponGear.h"
+#include "ElectroFieldGear.h"
 #include "Enemy.h"
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputSubsystems.h"
@@ -38,6 +39,7 @@ APlayerPawn::APlayerPawn()
 	BaseMesh->SetupAttachment(CapsuleComponent);
 
 	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
+	ElectroField = CreateDefaultSubobject<UElectroFieldGear>(TEXT("Electro Field"));
 	
 }
 

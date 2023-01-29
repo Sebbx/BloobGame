@@ -3,14 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Gear.h"
 #include "CannonWeaponGear.generated.h"
 
 /**
  * 
  */
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class BLOOBGAME_API UCannonWeaponGear : public UGear
+class BLOOBGAME_API UCannonWeaponGear : public UActorComponent
 {
 	GENERATED_BODY()
 
@@ -18,6 +17,9 @@ class BLOOBGAME_API UCannonWeaponGear : public UGear
 	TSubclassOf<class AProjectile> ProjectileClass;
 
 	FActorSpawnParameters ProjectileSpawnParameters;
+
+	UPROPERTY(EditAnywhere, Category = Meshes)
+	class UStaticMeshComponent* BaseMesh;
 
 public:	
 	// Sets default values for this component's properties

@@ -51,6 +51,11 @@ void UHealthComponent::Highlight()
 	//TODO lambda expression?
 }
 
+float UHealthComponent::GetHealth()
+{
+	return Health;
+}
+
 void UHealthComponent::DeHighlight()
 {
 	GetOwner()->FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, BaseMaterial);

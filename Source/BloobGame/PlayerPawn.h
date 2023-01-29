@@ -56,6 +56,9 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UCannonWeaponGear* Cannon;
 
+	UPROPERTY(EditAnywhere, Category = Gear)
+	class UElectroFieldGear* ElectroField;
+
 
 	
 	

@@ -12,6 +12,7 @@
 UCannonWeaponGear::UCannonWeaponGear()
 {
 	PrimaryComponentTick.bCanEverTick = true;
+	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Electro Field"));
 	
 }
 
@@ -24,7 +25,6 @@ void UCannonWeaponGear::BeginPlay()
 	
 	// This timer is managing shooting projectiles
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UCannonWeaponGear::Shoot, FireRate, true, 0.f);
-	
 }
 
 void UCannonWeaponGear::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -46,8 +46,6 @@ void UCannonWeaponGear::Shoot()
 			GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnLocation, LookAtEnemyRotation + ProjectileSpawnRotationOffset);
 		}
 	}
-
-	
 }
 
 void UCannonWeaponGear::AimAtNearestEnemy()

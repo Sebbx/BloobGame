@@ -3,12 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Gear.h"
 #include "HealthComponent.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class BLOOBGAME_API UHealthComponent : public UGear
+class BLOOBGAME_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
@@ -26,6 +25,8 @@ public:
 	float MaxHealth = 100.f;
 	float Health = 0.f;
 
+	float GetHealth();
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -41,6 +42,8 @@ private:
 
 	void DeHighlight();
 	void Highlight();
+
+	
 
 
 public:	
