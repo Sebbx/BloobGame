@@ -11,13 +11,8 @@
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/StarterContent/Particles/P_Ambient_Dust.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Particles/P_Ambient_Dust.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/3/UW/Y9PP6PJ04G2I4FKP25BQAB.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/7/57/S7RF9TSSZLCCPPL5SRAQMT.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/7/57/S7RF9TSSZLCCPPL5SRAQMT.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/D/6J/5XR0U2D9YPSOJB2MXESPF1.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BloobGame/HealthComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/HealthComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Projectile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/HealthComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/HealthComponent.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,6 +189,7 @@
       <workItem from="1674928787320" duration="286000" />
       <workItem from="1674997387255" duration="297000" />
       <workItem from="1674998060121" duration="4239000" />
+      <workItem from="1675012949551" duration="1843000" />
     </task>
     <servers />
   </component>
