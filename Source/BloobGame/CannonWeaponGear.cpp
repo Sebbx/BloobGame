@@ -12,7 +12,6 @@
 UCannonWeaponGear::UCannonWeaponGear()
 {
 	PrimaryComponentTick.bCanEverTick = true;
-
 	
 }
 
@@ -20,26 +19,32 @@ void UCannonWeaponGear::BeginPlay()
 {
 	Super::BeginPlay();
 
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UCannonWeaponGear::Shoot, FireRate, true, 0.f);
-	
 	Penetration = 2;
 	Damage = 2;
+	
+	// This timer is managing shooting projectiles
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UCannonWeaponGear::Shoot, FireRate, true, 0.f);
+	
 }
 
-void UCannonWeaponGear::TickComponent(float DeltaTime, ELevelTick TickType,
-	FActorComponentTickFunction* ThisTickFunction)
+void UCannonWeaponGear::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
+	
 	ProjectileSpawnLocation = GetOwner()->GetActorLocation();
 	AimAtNearestEnemy();
 }
 
 void UCannonWeaponGear::Shoot()
 {
+	//TODO EnemyInRange condition
 	if(ProjectileClass)
 	{
-		GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnLocation, ProjectileSpawnRotation);
+		for (int i = 0; i < NumberOfProjectiles; i++)
+		{
+			ProjectileSpawnRotationOffset.Yaw = (AngleBetweenProjectiles * i) - (AngleBetweenProjectiles * NumberOfProjectiles / 2) + AimYawCorrection;
+			GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnLocation, LookAtEnemyRotation + ProjectileSpawnRotationOffset);
+		}
 	}
 
 	
@@ -53,7 +58,7 @@ void UCannonWeaponGear::AimAtNearestEnemy()
 	if(!OutActors.IsEmpty())
 	{
 		float Distance;
-		ProjectileSpawnRotation = UKismetMathLibrary::FindLookAtRotation(ProjectileSpawnLocation,
+		LookAtEnemyRotation = UKismetMathLibrary::FindLookAtRotation(ProjectileSpawnLocation,
 			UGameplayStatics::FindNearestActor(ProjectileSpawnLocation, OutActors, Distance)->GetActorLocation());
 	}
 }

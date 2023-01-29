@@ -22,7 +22,7 @@ class BLOOBGAME_API UCannonWeaponGear : public UGear
 public:	
 	// Sets default values for this component's properties
 	UCannonWeaponGear();
-
+	
 	int Penetration;
 	float Damage;
 
@@ -36,14 +36,23 @@ public:
 	
 private:
 
-	UPROPERTY(EditAnywhere, Category = Gear)
-	float ProjectileSpawnZOffset = -10;
+	UPROPERTY(EditAnywhere, Category = Debug)
+	float AimYawCorrection = 5;
+	
+	UPROPERTY(EditAnywhere, Category = Features)
+	float FireRate = 1;
+
+	UPROPERTY(EditAnywhere, Category = Features)
+	float AngleBetweenProjectiles = 5;
+
+	UPROPERTY(EditAnywhere, Category = Features)
+	int NumberOfProjectiles = 1;
 	
 	FTimerHandle TimerHandle;
 	
-	float FireRate = 1;
 	FVector ProjectileSpawnLocation;
-	FRotator ProjectileSpawnRotation = FRotator::ZeroRotator;
+	FRotator ProjectileSpawnRotationOffset = FRotator::ZeroRotator;
+	FRotator LookAtEnemyRotation = FRotator::ZeroRotator;
 	
 	void Shoot();
 	void AimAtNearestEnemy();

@@ -15,6 +15,7 @@ AProjectile::AProjectile()
 	PrimaryActorTick.bCanEverTick = true;
 	
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
+	RootComponent = BaseMesh;
 
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile movement component"));
 
