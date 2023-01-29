@@ -38,8 +38,11 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Components)
 	class UFloatingPawnMovement* FloatingPawnMovement;
 
-	UPROPERTY(EditAnywhere, Category = Components)
+	UPROPERTY(EditAnywhere, Category = Gears)
 	class UHealthComponent* HealthComponent;
+
+	UPROPERTY(EditAnywhere, Category = Gears)
+	class UCannonWeaponGear* Cannon;
 	
 	UPROPERTY(EditAnywhere, Category = Components)
 	class USpringArmComponent* SpringArmComponent;
@@ -52,9 +55,6 @@ class BLOOBGAME_API APlayerPawn : public APawn
 
 	UPROPERTY(EditAnywhere, Category = Meshes)
 	class UStaticMeshComponent* BaseMesh;
-
-	UPROPERTY(EditAnywhere, Category = Gear)
-	class UCannonWeaponGear* Cannon;
 
 
 	

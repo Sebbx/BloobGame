@@ -38,23 +38,8 @@ void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDa
 	AController* Insigator, AActor* DamageCauser)
 {
 	if (Damage <= 0.f) return;
+
 	Health -= Damage;
-	
-	//Highlight actor when damage is taken
-	Highlight();
 }
-
-void UHealthComponent::Highlight()
-{
-	GetOwner()->FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, OnDamageMaterial);
-	GetWorld()->GetTimerManager().SetTimer(InputTimerHandle, this, &UHealthComponent::DeHighlight, 1, false, TimeToDehighlight);
-	//TODO lambda expression?
-}
-
-void UHealthComponent::DeHighlight()
-{
-	GetOwner()->FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, BaseMaterial);
-}
-
 
 

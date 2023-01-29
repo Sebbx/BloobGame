@@ -12,12 +12,6 @@ class BLOOBGAME_API UHealthComponent : public UGear
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, Category = OnDamage)
-	UMaterial* BaseMaterial;
-
-	UPROPERTY(EditAnywhere, Category = OnDamage)
-	UMaterial* OnDamageMaterial;
-
 public:	
 	// Sets default values for this component's properties
 	UHealthComponent();
@@ -31,16 +25,13 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(EditAnywhere, Category = OnDamage)
-	float TimeToDehighlight = 0.05;
 
 	FTimerHandle InputTimerHandle;
 
+
+
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* Insigator, AActor* DamageCauser);
-
-	void DeHighlight();
-	void Highlight();
 
 
 public:	

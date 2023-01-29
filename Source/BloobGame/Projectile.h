@@ -6,7 +6,6 @@
 #include "GameFramework/Actor.h"
 #include "Projectile.generated.h"
 
-class UCannonWeaponGear;
 UCLASS()
 class BLOOBGAME_API AProjectile : public AActor
 {
@@ -41,7 +40,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	UCannonWeaponGear* WeaponGear;
+	class UCannonWeaponGear* WeaponGear;
 	
 	int Penetration = 1;
 	float Damage = 1;
