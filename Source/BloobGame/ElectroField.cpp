@@ -2,7 +2,7 @@
 
 
 #include "ElectroField.h"
-
+#include "Math/Vector.h"
 #include "Enemy.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -21,23 +21,45 @@ AElectroField::AElectroField()
 void AElectroField::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
 void AElectroField::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	TArray<AActor*> Arr;
-	GetOverlappingActors(Arr, AEnemy::StaticClass());
 
-	for(AActor* Enemy : Arr)
-	{
-		AEnemy* Bloob = Cast<AEnemy>(Enemy);
-
-		auto DamageTypeClass = UDamageType::StaticClass();
-		UGameplayStatics::ApplyDamage(Enemy, 0.01, GetInstigatorController(), this, DamageTypeClass);
-	}
-
+	HandleAttack(DeltaTime);
+	HandleScaling(DeltaTime);
 }
 
+void AElectroField::HandleAttack(float DeltaTime)
+{
+	TArray<AActor*> Arr;
+	GetOverlappingActors(Arr, AEnemy::StaticClass());
+	for(AActor* Enemy : Arr)
+	{
+		auto DamageTypeClass = UDamageType::StaticClass();
+		UGameplayStatics::ApplyDamage(Enemy, Damage * DeltaTime, GetInstigatorController(), this, DamageTypeClass);
+	}
+}
+
+void AElectroField::HandleScaling(float DeltaTime)
+{
+	if(CurrentScale < 0) Destroy();
+	
+	CurrentScale = FMath::Lerp(CurrentScale, TargetScale, ScalingUpRate);
+	SetActorScale3D(FVector(CurrentScale, CurrentScale, 1));
+	
+	if(CurrentScale > TargetScale - TargetScale * .02 && !bScalingDown)
+	{
+		GetWorld()->GetTimerManager().SetTimer
+			(
+			TimerHandle,
+			[&]() { TargetScale = -0.5;}, // lambda expression
+			0.1f,
+			true,
+			1.0f
+			);
+		bScalingDown = true;
+	}
+}

@@ -3,6 +3,8 @@
 
 #include "ElectroFieldGear.h"
 
+#include "ElectroField.h"
+
 UElectroFieldGear::UElectroFieldGear()
 {
 	PrimaryComponentTick.bCanEverTick = true;
@@ -12,6 +14,7 @@ UElectroFieldGear::UElectroFieldGear()
 void UElectroFieldGear::BeginPlay()
 {
 	Super::BeginPlay();
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UElectroFieldGear::GenerateElectroField, FireRate, true, 0.f);
 }
 
 void UElectroFieldGear::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -21,5 +24,8 @@ void UElectroFieldGear::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 
 void UElectroFieldGear::GenerateElectroField()
 {
-	
+	if(ElectroFieldClass)
+	{
+		GetWorld()->SpawnActor<AElectroField>(ElectroFieldClass, GetOwner()->GetActorLocation(), GetOwner()->GetActorRotation());
+	}
 }

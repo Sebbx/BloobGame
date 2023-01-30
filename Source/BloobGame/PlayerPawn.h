@@ -20,21 +20,6 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputAction* IAMove;
 
-	UPROPERTY(EditAnywhere, Category = Input)
-	class UInputAction* IADebug1;
-
-	UPROPERTY(EditAnywhere, Category = Input)
-	class UInputAction* IADebug2;
-
-	UPROPERTY(EditAnywhere, Category = Input)
-	class UInputAction* IADebug3;
-
-	UPROPERTY(EditAnywhere, Category = Input)
-	class UInputAction* IADebug4;
-
-	UPROPERTY(EditAnywhere, Category = Input)
-	class UInputAction* IADebug5;
-
 	UPROPERTY(EditAnywhere, Category = Components)
 	class UFloatingPawnMovement* FloatingPawnMovement;
 
@@ -59,6 +44,22 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UElectroFieldGear* ElectroField;
 
+	// DEBUG, DELETE LATER ************************
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug1;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug2;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug3;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug4;
+
+	UPROPERTY(EditAnywhere, Category = Input)
+	class UInputAction* IADebug5;
 
 	
 	
