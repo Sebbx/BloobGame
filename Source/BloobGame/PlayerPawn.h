@@ -1,5 +1,4 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -7,7 +6,6 @@
 #include "InputActionValue.h"
 #include "InputMappingContext.h"
 #include "PlayerPawn.generated.h"
-
 
 UCLASS()
 class BLOOBGAME_API APlayerPawn : public APawn
@@ -61,8 +59,6 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputAction* IADebug5;
 
-	
-	
 
 public:
 	// Sets default values for this pawn's properties
@@ -71,22 +67,25 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 	void Move(const FInputActionValue& Value);
-	
 	void Debug1(const FInputActionValue& Value);
 	void Debug2(const FInputActionValue& Value);
 	void Debug3(const FInputActionValue& Value);
 	void Debug4(const FInputActionValue& Value);
 	void Debug5(const FInputActionValue& Value);
-	
-
-private:
-
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+private:
+	UPROPERTY(EditAnywhere, Category = OnDamage)
+	UMaterial* BaseMaterial;
+
+	UPROPERTY(EditAnywhere, Category = OnDamage)
+	UMaterial* OnDamageMaterial;
+
+	UPROPERTY(EditAnywhere)
+	float MaxHealth = 10;
 };

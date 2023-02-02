@@ -1,12 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "PlayerPawn.h"
-
 #include "CannonWeaponGear.h"
-#include "ElectroField.h"
 #include "ElectroFieldGear.h"
-#include "Enemy.h"
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
@@ -15,7 +10,6 @@
 #include "GameFramework/FloatingPawnMovement.h"
 #include "TimerManager.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 APlayerPawn::APlayerPawn()
@@ -24,24 +18,18 @@ APlayerPawn::APlayerPawn()
 	PrimaryActorTick.bCanEverTick = true;
 
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
-		
 	FloatingPawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Floating"));
-
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Component"));
-	RootComponent = CapsuleComponent;
-
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
-	SpringArmComponent->SetupAttachment(CapsuleComponent);
-
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	CameraComponent->SetupAttachment(SpringArmComponent);
-
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
-	BaseMesh->SetupAttachment(CapsuleComponent);
-
 	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
 	ElectroField = CreateDefaultSubobject<UElectroFieldGear>(TEXT("Electro Field"));
-	
+
+	RootComponent = CapsuleComponent;
+	SpringArmComponent->SetupAttachment(CapsuleComponent);
+	CameraComponent->SetupAttachment(SpringArmComponent);
+	BaseMesh->SetupAttachment(CapsuleComponent);
 }
 
 // Called when the game starts or when spawned
@@ -49,9 +37,7 @@ void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	//GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &APlayerPawn::Reload(), 1.f, false);
-	
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	if (const APlayerController* PlayerController = Cast<APlayerController>(Controller))
 	{
 		{
 			if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
@@ -61,23 +47,32 @@ void APlayerPawn::BeginPlay()
 		}
 	}
 
+	if(HealthComponent)
+	{
+		HealthComponent->MaxHealth = MaxHealth;
+		HealthComponent->Health = MaxHealth;
+
+		if (BaseMaterial && OnDamageMaterial)
+		{
+			HealthComponent->BaseMaterial = BaseMaterial;
+			HealthComponent->OnDamageMaterial = OnDamageMaterial;
+		}
+		else UE_LOG(LogTemp, Error, TEXT("APlayerPawn: One or both Materials for HealthComponent is not set"));
+	}
 }
 
 // Called every frame
 void APlayerPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
 }
 
-
-// ****************** INPUT ******************
+// ****************************************************** INPUT ******************************************************
 
 // Called to bind functionality to input
 void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
 	{
 		EnhancedInputComponent->BindAction(IAMove, ETriggerEvent::Triggered, this, &APlayerPawn::Move);
@@ -86,14 +81,11 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 		EnhancedInputComponent->BindAction(IADebug3, ETriggerEvent::Started, this, &APlayerPawn::Debug3);
 		EnhancedInputComponent->BindAction(IADebug4, ETriggerEvent::Started, this, &APlayerPawn::Debug4);
 		EnhancedInputComponent->BindAction(IADebug5, ETriggerEvent::Started, this, &APlayerPawn::Debug5);
-		
 	}
-	
 }
 
 void APlayerPawn::Move(const FInputActionValue& Value)
 {
-	
 	FVector2D MovementVector = Value.Get<FVector2D>();
 
 	if (Controller != nullptr)
@@ -112,14 +104,11 @@ void APlayerPawn::Move(const FInputActionValue& Value)
 		AddMovementInput(ForwardDirection, MovementVector.Y);
 		AddMovementInput(RightDirection, MovementVector.X);
 	}
-		
 }
 
 void APlayerPawn::Debug1(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 1")));
-
-
 }
 
 void APlayerPawn::Debug2(const FInputActionValue& Value)

@@ -1,13 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "CannonWeaponGear.generated.h"
 
-/**
- * 
- */
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BLOOBGAME_API UCannonWeaponGear : public UActorComponent
 {
@@ -16,17 +12,9 @@ class BLOOBGAME_API UCannonWeaponGear : public UActorComponent
 	UPROPERTY(EditAnywhere, Category = Gear)
 	TSubclassOf<class AProjectile> ProjectileClass;
 
-	FActorSpawnParameters ProjectileSpawnParameters;
-
-	UPROPERTY(EditAnywhere, Category = Meshes)
-	class UStaticMeshComponent* BaseMesh;
-
 public:	
 	// Sets default values for this component's properties
 	UCannonWeaponGear();
-	
-	int Penetration;
-	float Damage;
 
 protected:
 	// Called when the game starts
@@ -36,8 +24,10 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	
+	int Penetration = 1;
+	float Damage = 1;
+	
 private:
-
 	UPROPERTY(EditAnywhere, Category = Debug)
 	float AimYawCorrection = 5;
 	
@@ -50,6 +40,7 @@ private:
 	UPROPERTY(EditAnywhere, Category = Features)
 	int NumberOfProjectiles = 1;
 	
+	FActorSpawnParameters ProjectileSpawnParameters;
 	FTimerHandle TimerHandle;
 	
 	FVector ProjectileSpawnLocation;
@@ -58,6 +49,4 @@ private:
 	
 	void Shoot();
 	void AimAtNearestEnemy();
-	
-	
 };

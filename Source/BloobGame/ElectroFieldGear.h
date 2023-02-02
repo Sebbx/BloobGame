@@ -1,13 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "ElectroFieldGear.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class BLOOBGAME_API UElectroFieldGear : public UActorComponent
 {
@@ -30,11 +26,26 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, Category = Properties)
-	float FireRate = 1;
+	float DeployRate = 1;
+
+	UPROPERTY(EditAnywhere, Category = Properties)
+	float SpawnZOfsset = 0;
+
+	UPROPERTY(EditAnywhere, Category = Properties)
+	float Damage = 0.2f;
 	
+	UPROPERTY(EditAnywhere, Category = Properties)
+	float ScalingUpRate = 0.1;
+
+	UPROPERTY(EditAnywhere, Category = Properties)
+	float FullyScaledTime = 2;
+
+	UPROPERTY(EditAnywhere, Category = Properties)
+	float TargetScale = 1;
+
 	FTimerHandle TimerHandle;
 	
-	
 	void GenerateElectroField();
+	
 	
 };

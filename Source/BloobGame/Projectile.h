@@ -1,12 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Projectile.generated.h"
 
-class UCannonWeaponGear;
 UCLASS()
 class BLOOBGAME_API AProjectile : public AActor
 {
@@ -18,15 +16,7 @@ class BLOOBGAME_API AProjectile : public AActor
 	UPROPERTY(EditAnywhere, Category = Features)
 	class UProjectileMovementComponent* ProjectileMovementComponent;
 
-	FTimerHandle TimerHandle;
-	float TimeToDestroy = 2;
-
-	void DestroyProjectile();
-
-	UFUNCTION()
-	void OnCollisionBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& Hit);
-
-	
+	class UCannonWeaponGear* WeaponGear;
 	
 public:	
 	// Sets default values for this actor's properties
@@ -41,9 +31,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	UCannonWeaponGear* WeaponGear;
-	
+	FTimerHandle TimerHandle;
 	int Penetration = 1;
 	float Damage = 1;
+	float TimeToDestroy = 2;
 
+	UFUNCTION()
+	void OnCollisionBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& Hit);
+
+	void DestroyProjectile();
 };

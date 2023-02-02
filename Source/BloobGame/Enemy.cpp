@@ -1,31 +1,22 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "Enemy.h"
 #include "AIController.h"
-#include "AIHelpers.h"
-#include "EnemyAIController.h"
 #include "HealthComponent.h"
-#include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
-#include "Tasks/AITask.h"
 
 // Sets default values
 AEnemy::AEnemy()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	
-	
+
 	CapsuleComponent = GetCapsuleComponent();
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
-	
-
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
-	BaseMesh->SetupAttachment(CapsuleComponent);
 	
+	BaseMesh->SetupAttachment(CapsuleComponent);
 }
 
 // Called when the game starts or when spawned
@@ -34,7 +25,19 @@ void AEnemy::BeginPlay()
 	Super::BeginPlay();
 	
 	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-	
+
+	if(HealthComponent)
+	{
+		HealthComponent->MaxHealth = MaxHealth;
+		HealthComponent->Health = MaxHealth;
+
+		if (BaseMaterial && OnDamageMaterial)
+		{
+			HealthComponent->BaseMaterial = BaseMaterial;
+			HealthComponent->OnDamageMaterial = OnDamageMaterial;
+		}
+		else UE_LOG(LogTemp, Error, TEXT("AEnemy: One or both Materials for HealthComponent is not set"));
+	}
 }
 
 // Called every frame
@@ -46,13 +49,12 @@ void AEnemy::Tick(float DeltaTime)
 	AIController->MoveToLocation(PlayerPawn->GetActorLocation(), AcceptableRadius);
 	
 	HandleAttack();
-
 }
 
 void AEnemy::HandleAttack()
 {
-	auto DamageTypeClass = UDamageType::StaticClass();
-	//TODO Attacking
+	const auto DamageTypeClass = UDamageType::StaticClass();
+	
 	if (IsOverlappingActor(PlayerPawn) && CanAttack)
 	{
 		UGameplayStatics::ApplyDamage(PlayerPawn, Damage, GetOwner()->GetInstigatorController(), this, DamageTypeClass);
@@ -60,15 +62,8 @@ void AEnemy::HandleAttack()
 
 		GetWorldTimerManager().SetTimer(TimerHandle, this, &AEnemy::Reload, 1.f, false, ReloadTime);
 	}
-	auto Compi = Cast<UHealthComponent>( GetComponentByClass(UHealthComponent::StaticClass()));
-	//UE_LOG(LogTemp, Warning, TEXT("%f"), Compi->Health);
-}
-
-// Called to bind functionality to input
-void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
+	// Debug
+	UE_LOG(LogTemp, Warning, TEXT("%f"), Cast<UHealthComponent>( GetComponentByClass(UHealthComponent::StaticClass()))->Health);
 }
 
 void AEnemy::Reload()
@@ -76,4 +71,3 @@ void AEnemy::Reload()
 	CanAttack = true;
 	GetWorldTimerManager().ClearTimer(TimerHandle);
 }
-

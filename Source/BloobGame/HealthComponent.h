@@ -5,31 +5,28 @@
 #include "CoreMinimal.h"
 #include "HealthComponent.generated.h"
 
-
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BLOOBGAME_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, Category = OnDamage)
-	UMaterial* BaseMaterial;
-
-	UPROPERTY(EditAnywhere, Category = OnDamage)
-	UMaterial* OnDamageMaterial;
-
 public:	
 	// Sets default values for this component's properties
 	UHealthComponent();
 
-	UPROPERTY(EditAnywhere)
-	float MaxHealth = 100.f;
-	float Health = 0.f;
-
-	float GetHealth();
-
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+	UMaterial* BaseMaterial;
+	UMaterial* OnDamageMaterial;
+
+	float MaxHealth = 100.f;
+	float Health = 0.f;
 
 private:
 	UPROPERTY(EditAnywhere, Category = OnDamage)
@@ -42,13 +39,4 @@ private:
 
 	void DeHighlight();
 	void Highlight();
-
-	
-
-
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-		
 };

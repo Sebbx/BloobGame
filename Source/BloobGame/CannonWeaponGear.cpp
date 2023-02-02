@@ -1,8 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "CannonWeaponGear.h"
-
 #include "Enemy.h"
 #include "Projectile.h"
 #include "Kismet/GameplayStatics.h"
@@ -12,16 +9,11 @@
 UCannonWeaponGear::UCannonWeaponGear()
 {
 	PrimaryComponentTick.bCanEverTick = true;
-	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Electro Field"));
-	
 }
 
 void UCannonWeaponGear::BeginPlay()
 {
 	Super::BeginPlay();
-
-	Penetration = 2;
-	Damage = 2;
 	
 	// This timer is managing shooting projectiles
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UCannonWeaponGear::Shoot, FireRate, true, 0.f);
@@ -32,6 +24,7 @@ void UCannonWeaponGear::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	
 	ProjectileSpawnLocation = GetOwner()->GetActorLocation();
+	
 	AimAtNearestEnemy();
 }
 
