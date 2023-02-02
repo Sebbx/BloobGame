@@ -108,7 +108,7 @@ void APlayerPawn::Move(const FInputActionValue& Value)
 
 void APlayerPawn::Debug1(const FInputActionValue& Value)
 {
-	//GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 1")));
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 1")));
 }
 
 void APlayerPawn::Debug2(const FInputActionValue& Value)
