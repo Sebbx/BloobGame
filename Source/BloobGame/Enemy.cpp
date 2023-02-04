@@ -63,7 +63,7 @@ void AEnemy::HandleAttack()
 		GetWorldTimerManager().SetTimer(TimerHandle, this, &AEnemy::Reload, 1.f, false, ReloadTime);
 	}
 	// Debug
-	UE_LOG(LogTemp, Warning, TEXT("%f"), Cast<UHealthComponent>( GetComponentByClass(UHealthComponent::StaticClass()))->Health);
+	//UE_LOG(LogTemp, Warning, TEXT("%f"), Cast<UHealthComponent>( GetComponentByClass(UHealthComponent::StaticClass()))->Health);
 }
 
 void AEnemy::Reload()

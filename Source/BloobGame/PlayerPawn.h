@@ -42,6 +42,9 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UElectroFieldGear* ElectroField;
 
+	UPROPERTY(EditAnywhere, Category = Gear)
+	class UShurikenThrowerGear* ShurikenThrower;
+
 	// DEBUG, DELETE LATER ************************
 
 	UPROPERTY(EditAnywhere, Category = Input)

@@ -43,6 +43,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = Properties)
 	float TargetScale = 1;
 
+	UPROPERTY(EditAnywhere, Category = Properties)
+	bool IsUnlocked = false;
+
 	FTimerHandle TimerHandle;
 	
 	void GenerateElectroField();

@@ -6,6 +6,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "HealthComponent.h"
+#include "ShurikenThrowerGear.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
 #include "TimerManager.h"
@@ -25,6 +26,7 @@ APlayerPawn::APlayerPawn()
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
 	ElectroField = CreateDefaultSubobject<UElectroFieldGear>(TEXT("Electro Field"));
+	//ShurikenThrower = CreateDefaultSubobject<UShurikenThrowerGear>(TEXT("ShurikenThrower"));
 
 	RootComponent = CapsuleComponent;
 	SpringArmComponent->SetupAttachment(CapsuleComponent);

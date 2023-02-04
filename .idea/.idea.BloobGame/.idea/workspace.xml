@@ -6,9 +6,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96503929-c297-4145-85ba-5c6fdb9a449e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vsconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.vsconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Audio/Collapse01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Audio/Collapse01.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/7/35/8EIXM3H4PMENK75ZU2QIQ1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/7/35/8EIXM3H4PMENK75ZU2QIQ1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/A/2P/INDDMWHATANGQTSXBY7IDX.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/A/2P/INDDMWHATANGQTSXBY7IDX.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/ElectroFieldGear.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/ElectroFieldGear.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/ElectroFieldGear.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/ElectroFieldGear.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Enemy.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Projectile.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,27 +38,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DebuggerViewTab_PTCS_FirstProportionKey": "0.34993926",
-    "DebuggerViewTab_PTCS_LastProportionKey": "0.0",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Changed Files",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
-    "settings.editor.splitter.proportion": "0.19873595",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DebuggerViewTab_PTCS_FirstProportionKey&quot;: &quot;0.34993926&quot;,
+    &quot;DebuggerViewTab_PTCS_LastProportionKey&quot;: &quot;0.0&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Changed Files&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;UnrealLogSettings&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.19873595&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Sebik\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Sebik\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\Sebik\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Sebik\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Sebik\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Sebik\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C++ Project.BloobGame">
     <configuration name="BloobGame" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -196,7 +207,11 @@
       <workItem from="1675315705712" duration="3187000" />
       <workItem from="1675348120890" duration="12516000" />
       <workItem from="1675377983723" duration="774000" />
-      <workItem from="1675379233959" duration="24000" />
+      <workItem from="1675379233959" duration="622000" />
+      <workItem from="1675466011068" duration="2165000" />
+      <workItem from="1675476823453" duration="3601000" />
+      <workItem from="1675511040705" duration="20931000" />
+      <workItem from="1675536955686" duration="40000" />
     </task>
     <servers />
   </component>

@@ -10,7 +10,8 @@ UElectroFieldGear::UElectroFieldGear()
 void UElectroFieldGear::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UElectroFieldGear::GenerateElectroField, DeployRate, true, 1.f);
+	if(IsUnlocked) GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UElectroFieldGear::GenerateElectroField, DeployRate, true, 1.f);
+	
 }
 
 void UElectroFieldGear::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)

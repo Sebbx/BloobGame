@@ -24,7 +24,10 @@ void AProjectile::BeginPlay()
 
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AProjectile::DestroyProjectile, 1, false, TimeToDestroy);
 
-	BaseMesh->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnCollisionBegin);
+	if (BaseMesh)
+	{
+		BaseMesh->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnCollisionBegin);
+	}
 
 	WeaponGear = Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->FindComponentByClass<UCannonWeaponGear>();
 	Penetration =  WeaponGear->Penetration;
