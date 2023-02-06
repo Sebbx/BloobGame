@@ -31,6 +31,9 @@ public:
 private:
 	UPROPERTY(EditAnywhere, Category = OnDamage)
 	float TimeToDehighlight = 0.05;
+	
+	UPROPERTY(EditAnywhere, Category = Debug)
+	bool LogHealth = false;
 
 	FTimerHandle InputTimerHandle;
 

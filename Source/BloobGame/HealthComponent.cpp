@@ -21,7 +21,7 @@ void UHealthComponent::BeginPlay()
 void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	
+	if(LogHealth) UE_LOG(LogTemp, Warning, TEXT("%f"), Health);	
 	if(Health <=0) GetOwner()->Destroy();
 }
 

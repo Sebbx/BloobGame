@@ -30,9 +30,12 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Components)
 	class UCameraComponent* CameraComponent;
 
+	UPROPERTY(EditAnywhere, Category = Components)
+	class USceneComponent* ShurikensPivot;
+
 	UPROPERTY(EditAnywhere, Category = Collision)
 	class UCapsuleComponent* CapsuleComponent;
-
+	
 	UPROPERTY(EditAnywhere, Category = Meshes)
 	class UStaticMeshComponent* BaseMesh;
 
@@ -40,10 +43,10 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	class UCannonWeaponGear* Cannon;
 
 	UPROPERTY(EditAnywhere, Category = Gear)
-	class UElectroFieldGear* ElectroField;
+	class UShurikensGear* Shurikens;
 
 	UPROPERTY(EditAnywhere, Category = Gear)
-	class UShurikenThrowerGear* ShurikenThrower;
+	class UElectroFieldGear* ElectroField;
 
 	// DEBUG, DELETE LATER ************************
 

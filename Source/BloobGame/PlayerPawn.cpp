@@ -6,10 +6,9 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "HealthComponent.h"
-#include "ShurikenThrowerGear.h"
+#include "ShurikensGear.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
-#include "TimerManager.h"
 #include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
@@ -26,18 +25,21 @@ APlayerPawn::APlayerPawn()
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
 	ElectroField = CreateDefaultSubobject<UElectroFieldGear>(TEXT("Electro Field"));
-	//ShurikenThrower = CreateDefaultSubobject<UShurikenThrowerGear>(TEXT("ShurikenThrower"));
-
+	ShurikensPivot = CreateDefaultSubobject<USceneComponent>(TEXT("Pivot"));
+	Shurikens = CreateDefaultSubobject<UShurikensGear>(TEXT("Shurikens"));
+	
 	RootComponent = CapsuleComponent;
 	SpringArmComponent->SetupAttachment(CapsuleComponent);
 	CameraComponent->SetupAttachment(SpringArmComponent);
 	BaseMesh->SetupAttachment(CapsuleComponent);
+	Shurikens->ShurikensPivot = ShurikensPivot;
 }
 
 // Called when the game starts or when spawned
 void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
+	ShurikensPivot->AttachToComponent(RootComponent, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	
 	if (const APlayerController* PlayerController = Cast<APlayerController>(Controller))
 	{

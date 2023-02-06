@@ -49,6 +49,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 10;
 
+
 	APawn* PlayerPawn;
 	FTimerHandle TimerHandle;
 	bool CanAttack = true;
