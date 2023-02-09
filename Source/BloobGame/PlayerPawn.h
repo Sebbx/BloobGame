@@ -15,6 +15,9 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputMappingContext* DefaultMappingContext;
 
+	UPROPERTY(EditAnywhere, Category = Gear)
+	class UShurikensGear* Shurikens;
+	
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputAction* IAMove;
 
@@ -42,8 +45,6 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UCannonWeaponGear* Cannon;
 
-	UPROPERTY(EditAnywhere, Category = Gear)
-	class UShurikensGear* Shurikens;
 
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UElectroFieldGear* ElectroField;
@@ -91,6 +92,12 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = OnDamage)
 	UMaterial* OnDamageMaterial;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class ULevelUpUI> LevelUpUIClass;
+
+	UPROPERTY()
+	class ULevelUpUI* LevelUpUI;
 
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 10;

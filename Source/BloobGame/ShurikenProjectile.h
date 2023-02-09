@@ -10,6 +10,9 @@ UCLASS()
 class BLOOBGAME_API AShurikenProjectile : public AActor
 {
 	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, Category = Meshes)
+	class UStaticMeshComponent* BaseMesh;
 	
 public:	
 	// Sets default values for this actor's properties
@@ -23,6 +26,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+
+private:
 	UPROPERTY(EditAnywhere)
 	float RotationSpeed = 100;
+	
+	float Damage = 1;
+
+	UFUNCTION()
+	void OnCollisionBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& Hit);
 };

@@ -2,14 +2,17 @@
 #include "PlayerPawn.h"
 #include "CannonWeaponGear.h"
 #include "ElectroFieldGear.h"
+#include "LevelUpUI.h"
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "HealthComponent.h"
 #include "ShurikensGear.h"
+#include "Blueprint/UserWidget.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 APlayerPawn::APlayerPawn()
@@ -20,13 +23,13 @@ APlayerPawn::APlayerPawn()
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
 	FloatingPawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Floating"));
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Component"));
+	Shurikens = CreateDefaultSubobject<UShurikensGear>(TEXT("Shurikens"));
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
 	ElectroField = CreateDefaultSubobject<UElectroFieldGear>(TEXT("Electro Field"));
 	ShurikensPivot = CreateDefaultSubobject<USceneComponent>(TEXT("Pivot"));
-	Shurikens = CreateDefaultSubobject<UShurikensGear>(TEXT("Shurikens"));
 	
 	RootComponent = CapsuleComponent;
 	SpringArmComponent->SetupAttachment(CapsuleComponent);
@@ -113,11 +116,21 @@ void APlayerPawn::Move(const FInputActionValue& Value)
 void APlayerPawn::Debug1(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 1")));
+
+	if (LevelUpUIClass)
+	{
+		LevelUpUI = CreateWidget<ULevelUpUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), LevelUpUIClass);
+		LevelUpUI->AddToPlayerScreen();
+	}
 }
 
 void APlayerPawn::Debug2(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 2")));
+	if(LevelUpUI)
+	{
+		LevelUpUI->RemoveFromParent();
+	}
 }
 
 void APlayerPawn::Debug3(const FInputActionValue& Value)
