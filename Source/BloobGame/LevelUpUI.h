@@ -15,14 +15,17 @@ class BLOOBGAME_API ULevelUpUI : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	void SetPanelName(FText PanelName);
+	void SetPanelName(FText PanelName, int PanelIndex);
 
-	void SetPanelDescription(FText PanelDescription);
-
-	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	class UTextBlock* Name1stPanel;
+	void SetPanelDescription(FText PanelDescription, int PanelIndex);
 
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
-	class UTextBlock* Description1stPanel;
+	class UTextBlock* NamePanel1;
+
+	UPROPERTY(EditAnywhere, meta = (BindWidget))
+	class UTextBlock* DescriptionPanel1;
+
+	UPROPERTY(EditAnywhere, meta = (BindWidget))
+	class UButton* ButtonPanel1;
 	
 };

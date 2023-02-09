@@ -7,17 +7,19 @@
   <component name="ChangeListManager">
     <list default="true" id="96503929-c297-4145-85ba-5c6fdb9a449e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BloobGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/BloobGame.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_Shuriken.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Weapon/BP_Shuriken.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/C/DT/PEVCAEFUS8CTT3XWZXMVDS.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Sandbox/C/DT/PEVCAEFUS8CTT3XWZXMVDS.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor.modules" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor.modules" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/BloobGame.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/BloobGame.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/BP_LevelUpUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_LevelUpUI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/ElectroFieldGear.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/ElectroFieldGear.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/HealthComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/HealthComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/ShurikenProjectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/ShurikenProjectile.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/ShurikenProjectile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/ShurikenProjectile.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/ShurikensGear.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/ShurikensGear.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +215,7 @@
       <workItem from="1675537069629" duration="1416000" />
       <workItem from="1675608759752" duration="12750000" />
       <workItem from="1675695091718" duration="3994000" />
-      <workItem from="1675955291251" duration="3199000" />
+      <workItem from="1675955291251" duration="8796000" />
     </task>
     <servers />
   </component>

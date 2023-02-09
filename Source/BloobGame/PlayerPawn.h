@@ -101,4 +101,7 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 10;
+
+	UFUNCTION()
+	void ButtonClicked();
 };

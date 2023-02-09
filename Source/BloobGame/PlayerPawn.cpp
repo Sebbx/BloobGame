@@ -10,6 +10,7 @@
 #include "ShurikensGear.h"
 #include "Blueprint/UserWidget.h"
 #include "Camera/CameraComponent.h"
+#include "Components/Button.h"
 #include "GameFramework/FloatingPawnMovement.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -74,6 +75,11 @@ void APlayerPawn::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+void APlayerPawn::ButtonClicked()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Button1 Clicked")));
+}
+
 // ****************************************************** INPUT ******************************************************
 
 // Called to bind functionality to input
@@ -120,6 +126,7 @@ void APlayerPawn::Debug1(const FInputActionValue& Value)
 	if (LevelUpUIClass)
 	{
 		LevelUpUI = CreateWidget<ULevelUpUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), LevelUpUIClass);
+		LevelUpUI->ButtonPanel1->OnClicked.AddDynamic(this, &APlayerPawn::ButtonClicked);
 		LevelUpUI->AddToPlayerScreen();
 	}
 }
@@ -136,11 +143,13 @@ void APlayerPawn::Debug2(const FInputActionValue& Value)
 void APlayerPawn::Debug3(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 3")));
+	if(LevelUpUI) LevelUpUI->SetPanelName(FText::FromString("AAA"), 1);
 }
 
 void APlayerPawn::Debug4(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 4")));
+	Cannon->DrawTheUpgradeCategory();
 }
 
 void APlayerPawn::Debug5(const FInputActionValue& Value)

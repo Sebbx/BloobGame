@@ -2,10 +2,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Gear.h"
 #include "ElectroFieldGear.generated.h"
 
 UCLASS()
-class BLOOBGAME_API UElectroFieldGear : public UActorComponent
+class BLOOBGAME_API UElectroFieldGear : public UGear
 {
 	GENERATED_BODY()
 

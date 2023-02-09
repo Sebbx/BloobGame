@@ -9,11 +9,16 @@
 UCannonWeaponGear::UCannonWeaponGear()
 {
 	PrimaryComponentTick.bCanEverTick = true;
+	Categories.Add("A");
+	Categories.Add("A");
+	Categories.Add("A");
 }
 
 void UCannonWeaponGear::BeginPlay()
 {
 	Super::BeginPlay();
+
+	UE_LOG(LogTemp, Warning, TEXT("%i"), Categories.Num());
 	
 	// This timer is managing shooting projectiles
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UCannonWeaponGear::Shoot, FireRate, true, 0.f);

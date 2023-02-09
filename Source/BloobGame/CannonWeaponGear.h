@@ -2,10 +2,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Gear.h"
 #include "CannonWeaponGear.generated.h"
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class BLOOBGAME_API UCannonWeaponGear : public UActorComponent
+class BLOOBGAME_API UCannonWeaponGear : public UGear
 {
 	GENERATED_BODY()
 

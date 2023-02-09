@@ -3,10 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Gear.h"
 #include "HealthComponent.generated.h"
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class BLOOBGAME_API UHealthComponent : public UActorComponent
+class BLOOBGAME_API UHealthComponent : public UGear
 {
 	GENERATED_BODY()
 

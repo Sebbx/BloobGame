@@ -3,12 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+#include "Gear.h"
 #include "ShurikensGear.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class BLOOBGAME_API UShurikensGear : public UActorComponent
+class BLOOBGAME_API UShurikensGear : public UGear
 {
 	GENERATED_BODY()
 

@@ -5,18 +5,20 @@
 
 #include "Components/TextBlock.h"
 
-void ULevelUpUI::SetPanelName(FText PanelName)
+void ULevelUpUI::SetPanelName(FText PanelName, int PanelIndex)
 {
-	if (Name1stPanel)
+	switch(PanelIndex)
 	{
-		Name1stPanel->SetText(PanelName);
+		case 1: if (NamePanel1) NamePanel1->SetText(PanelName); break;
+		default: break;
 	}
 }
 
-void ULevelUpUI::SetPanelDescription(FText PanelDescription)
+void ULevelUpUI::SetPanelDescription(FText PanelDescription, int PanelIndex)
 {
-	if (Description1stPanel)
+	switch(PanelIndex)
 	{
-		Description1stPanel->SetText(PanelDescription);
+		case 1: if (DescriptionPanel1) DescriptionPanel1->SetText(PanelDescription); break;
+		default: break;
 	}
 }
