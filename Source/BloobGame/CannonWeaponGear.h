@@ -24,22 +24,25 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	
+
+	UPROPERTY(EditAnywhere, Category = Features)
 	int Penetration = 1;
-	float Damage = 1;
 	
-private:
-	UPROPERTY(EditAnywhere, Category = Debug)
-	float AimYawCorrection = 5;
+	UPROPERTY(EditAnywhere, Category = Features)
+	float Damage = 1;
 	
 	UPROPERTY(EditAnywhere, Category = Features)
 	float FireRate = 1;
-
+	
+	UPROPERTY(EditAnywhere, Category = Debug)
+	float AimYawCorrection = 5;
+	
 	UPROPERTY(EditAnywhere, Category = Features)
 	float AngleBetweenProjectiles = 5;
 
 	UPROPERTY(EditAnywhere, Category = Features)
 	int NumberOfProjectiles = 1;
+private:
 	
 	FActorSpawnParameters ProjectileSpawnParameters;
 	FTimerHandle TimerHandle;
@@ -47,7 +50,8 @@ private:
 	FVector ProjectileSpawnLocation;
 	FRotator ProjectileSpawnRotationOffset = FRotator::ZeroRotator;
 	FRotator LookAtEnemyRotation = FRotator::ZeroRotator;
-	
+
+	void ConstructionForUpgrading();
 	void Shoot();
 	void AimAtNearestEnemy();
 };

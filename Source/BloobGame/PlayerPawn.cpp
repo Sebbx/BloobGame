@@ -21,15 +21,15 @@ APlayerPawn::APlayerPawn()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
-	FloatingPawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Floating"));
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Component"));
-	Shurikens = CreateDefaultSubobject<UShurikensGear>(TEXT("Shurikens"));
+	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
+	FloatingPawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Floating"));
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
 	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
-	ElectroField = CreateDefaultSubobject<UElectroFieldGear>(TEXT("Electro Field"));
+	Shurikens = CreateDefaultSubobject<UShurikensGear>(TEXT("Shurikens"));
+	ElectroField = CreateDefaultSubobject<UElectroFieldGear>(TEXT("ElectroField"));
 	ShurikensPivot = CreateDefaultSubobject<USceneComponent>(TEXT("Pivot"));
 	
 	RootComponent = CapsuleComponent;
@@ -73,11 +73,6 @@ void APlayerPawn::BeginPlay()
 void APlayerPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-}
-
-void APlayerPawn::ButtonClicked()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Button1 Clicked")));
 }
 
 // ****************************************************** INPUT ******************************************************
@@ -126,7 +121,8 @@ void APlayerPawn::Debug1(const FInputActionValue& Value)
 	if (LevelUpUIClass)
 	{
 		LevelUpUI = CreateWidget<ULevelUpUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), LevelUpUIClass);
-		LevelUpUI->ButtonPanel1->OnClicked.AddDynamic(this, &APlayerPawn::ButtonClicked);
+		LevelUpUI->ButtonPanel1->OnClicked.AddDynamic(LevelUpUI, &ULevelUpUI::Button1Clicked);
+		LevelUpUI->Initialize(this, FloatingPawnMovement, HealthComponent, Cannon, Shurikens, ElectroField);
 		LevelUpUI->AddToPlayerScreen();
 	}
 }

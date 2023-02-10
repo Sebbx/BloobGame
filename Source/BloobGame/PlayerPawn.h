@@ -86,6 +86,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+
+	UPROPERTY(EditAnywhere)
+	float MaxHealth = 10;
 private:
 	UPROPERTY(EditAnywhere, Category = OnDamage)
 	UMaterial* BaseMaterial;
@@ -98,10 +101,5 @@ private:
 
 	UPROPERTY()
 	class ULevelUpUI* LevelUpUI;
-
-	UPROPERTY(EditAnywhere)
-	float MaxHealth = 10;
-
-	UFUNCTION()
-	void ButtonClicked();
+	
 };

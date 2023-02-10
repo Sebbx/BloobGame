@@ -9,9 +9,33 @@
 UCannonWeaponGear::UCannonWeaponGear()
 {
 	PrimaryComponentTick.bCanEverTick = true;
-	Categories.Add("A");
-	Categories.Add("A");
-	Categories.Add("A");
+	ConstructionForUpgrading();
+}
+
+void UCannonWeaponGear::ConstructionForUpgrading()
+{
+	LevelCat1 = 0;
+	LevelCat2 = 0;
+	LevelCat3 = 0;
+	IsUnlocked = false;
+	IsFullyUpgraded = false;
+
+	UnlockDescription = "Powerful Cannon that shoot big projectile every 1 second straight into nearest enemy";
+	Categories.Add("1st");
+	Categories.Add("2nd");
+	Categories.Add("3rd");
+	
+	DescriptionsCat1.Add("Penetration +1");
+	DescriptionsCat1.Add("Penetration +1, Firerate -5%");
+	DescriptionsCat1.Add("Penetration +1, Spread +10%");
+
+	DescriptionsCat2.Add("Bullet +1");
+	DescriptionsCat2.Add("Bullet +1, Spread +10%");
+	DescriptionsCat2.Add("Bullet +1, Firerate -5%");
+
+	DescriptionsCat3.Add("Firerate +10%");
+	DescriptionsCat3.Add("Firerate +15%");
+	DescriptionsCat3.Add("Firerate +15%, Spread -25%");
 }
 
 void UCannonWeaponGear::BeginPlay()
@@ -36,7 +60,7 @@ void UCannonWeaponGear::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 void UCannonWeaponGear::Shoot()
 {
 	//TODO EnemyInRange condition
-	if(ProjectileClass)
+	if(ProjectileClass && IsUnlocked)
 	{
 		for (int i = 0; i < NumberOfProjectiles; i++)
 		{

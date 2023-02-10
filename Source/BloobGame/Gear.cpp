@@ -15,11 +15,6 @@ UGear::UGear()
 
 FString UGear::DrawTheUpgradeCategory()
 {
-	if (!Categories.IsEmpty())
-	{
-		int RandomInt = FMath::RandRange(0, Categories.Num());
-		UE_LOG(LogTemp, Error, TEXT("%i"), Categories.Num());
-	}
-	return "A";
+	return Categories[FMath::RandRange(0, Categories.Num() - 1)];
 }
 

@@ -17,19 +17,35 @@ public:
 	UGear();
 
 protected:
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	TArray<FString> Categories;
+
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	FString UnlockDescription;
 
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	int32 LevelCat1;
+
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	int32 LevelCat2;
+
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	int32 LevelCat3;
 
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	bool IsUnlocked;
+
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	bool IsFullyUpgraded;
 
 public:
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	TArray<FString> DescriptionsCat1;
+	
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	TArray<FString> DescriptionsCat2;
+
+	UPROPERTY(EditAnywhere, Category = GearClass)
 	TArray<FString> DescriptionsCat3;
 
 	FString DrawTheUpgradeCategory();
