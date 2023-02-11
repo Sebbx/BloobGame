@@ -17,8 +17,8 @@ public:
 	UGear();
 
 protected:
-	UPROPERTY(EditAnywhere, Category = GearClass)
-	TArray<FString> Categories;
+
+public:
 
 	UPROPERTY(EditAnywhere, Category = GearClass)
 	FString UnlockDescription;
@@ -37,8 +37,10 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = GearClass)
 	bool IsFullyUpgraded;
-
-public:
+	
+	UPROPERTY(EditAnywhere, Category = GearClass)
+	TArray<FString> Categories;
+	
 	UPROPERTY(EditAnywhere, Category = GearClass)
 	TArray<FString> DescriptionsCat1;
 	
@@ -48,6 +50,10 @@ public:
 	UPROPERTY(EditAnywhere, Category = GearClass)
 	TArray<FString> DescriptionsCat3;
 
+	bool CheckThatisFullyUpgraded();
 	FString DrawTheUpgradeCategory();
+	FString GetDescritpion(FString Category);
+	void RemoveItemFromEqList(FString ItemName);
+	
 		
 };

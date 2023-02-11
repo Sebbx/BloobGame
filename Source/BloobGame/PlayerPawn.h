@@ -44,8 +44,7 @@ class BLOOBGAME_API APlayerPawn : public APawn
 
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UCannonWeaponGear* Cannon;
-
-
+	
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UElectroFieldGear* ElectroField;
 
@@ -70,6 +69,9 @@ class BLOOBGAME_API APlayerPawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	APlayerPawn();
+	
+	UPROPERTY(EditAnywhere, Category = GearClass)
+	TArray<FString> EquipmentList;
 
 protected:
 	// Called when the game starts or when spawned

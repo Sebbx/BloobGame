@@ -9,16 +9,16 @@
 UCannonWeaponGear::UCannonWeaponGear()
 {
 	PrimaryComponentTick.bCanEverTick = true;
-	ConstructionForUpgrading();
 }
 
 void UCannonWeaponGear::ConstructionForUpgrading()
 {
+	IsUnlocked = false;
+	IsFullyUpgraded = false;
+
 	LevelCat1 = 0;
 	LevelCat2 = 0;
 	LevelCat3 = 0;
-	IsUnlocked = false;
-	IsFullyUpgraded = false;
 
 	UnlockDescription = "Powerful Cannon that shoot big projectile every 1 second straight into nearest enemy";
 	Categories.Add("1st");
@@ -36,11 +36,47 @@ void UCannonWeaponGear::ConstructionForUpgrading()
 	DescriptionsCat3.Add("Firerate +10%");
 	DescriptionsCat3.Add("Firerate +15%");
 	DescriptionsCat3.Add("Firerate +15%, Spread -25%");
+	
 }
 
+void UCannonWeaponGear::Upgrade(FString Category)
+{
+	if(IsUnlocked)
+	{
+		if(Category == "1st")
+		{
+			switch(LevelCat1)
+			{
+			case 0:
+				{
+					Penetration++;
+					LevelCat1++;
+				} break;
+				
+			case 1:
+				{	
+					Penetration++;
+					FireRate -= FireRate * 0.05;
+					LevelCat1++;
+				} break;
+				
+			case 2:
+				{	
+					Penetration++;
+					FireRate += AngleBetweenProjectiles * 0.1;
+					LevelCat1++;
+					Categories.Remove("1st");
+				} break;
+			default: break;
+			}
+		}
+	}
+	else IsUnlocked = true;
+}
 void UCannonWeaponGear::BeginPlay()
 {
 	Super::BeginPlay();
+	ConstructionForUpgrading();
 
 	UE_LOG(LogTemp, Warning, TEXT("%i"), Categories.Num());
 	
@@ -82,3 +118,4 @@ void UCannonWeaponGear::AimAtNearestEnemy()
 			UGameplayStatics::FindNearestActor(ProjectileSpawnLocation, OutActors, Distance)->GetActorLocation());
 	}
 }
+

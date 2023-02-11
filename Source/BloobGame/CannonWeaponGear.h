@@ -42,6 +42,8 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = Features)
 	int NumberOfProjectiles = 1;
+
+	void Upgrade(FString Category);
 private:
 	
 	FActorSpawnParameters ProjectileSpawnParameters;

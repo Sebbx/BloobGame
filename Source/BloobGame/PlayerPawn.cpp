@@ -37,6 +37,12 @@ APlayerPawn::APlayerPawn()
 	CameraComponent->SetupAttachment(SpringArmComponent);
 	BaseMesh->SetupAttachment(CapsuleComponent);
 	Shurikens->ShurikensPivot = ShurikensPivot;
+
+	EquipmentList.Add("Movement");
+	EquipmentList.Add("Health");
+	EquipmentList.Add("Cannon");
+	EquipmentList.Add("Shurikens");
+	EquipmentList.Add("ElectroField");
 }
 
 // Called when the game starts or when spawned
@@ -72,6 +78,7 @@ void APlayerPawn::BeginPlay()
 // Called every frame
 void APlayerPawn::Tick(float DeltaTime)
 {
+	Cannon->IsFullyUpgraded = Cannon->CheckThatisFullyUpgraded();
 	Super::Tick(DeltaTime);
 }
 
@@ -139,13 +146,15 @@ void APlayerPawn::Debug2(const FInputActionValue& Value)
 void APlayerPawn::Debug3(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 3")));
-	if(LevelUpUI) LevelUpUI->SetPanelName(FText::FromString("AAA"), 1);
+
+	LevelUpUI->Panel1Item = "Cannon";
+	LevelUpUI->SetPanelName(FText::AsCultureInvariant(LevelUpUI->Panel1Item), 1);
+	LevelUpUI->SetPanelDescription(LevelUpUI->GetDescriptionOfItem(LevelUpUI->Panel1Item), 1);
 }
 
 void APlayerPawn::Debug4(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 4")));
-	Cannon->DrawTheUpgradeCategory();
 }
 
 void APlayerPawn::Debug5(const FInputActionValue& Value)
