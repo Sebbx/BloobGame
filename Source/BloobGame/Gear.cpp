@@ -18,26 +18,25 @@ UGear::UGear()
 
 bool UGear::CheckThatisFullyUpgraded()
 {
-	if ((LevelCat1 >= DescriptionsCat1.Num() - 1) && (LevelCat2 >= DescriptionsCat2.Num() - 1) && (LevelCat3 >= DescriptionsCat3.Num() - 1))
+	if ((LevelCat1 >= DescriptionsCat1.Num()) && (LevelCat2 >= DescriptionsCat2.Num()) && (LevelCat3 >= DescriptionsCat3.Num()))
 	{
-		IsFullyUpgraded = true;
 		return true;
 	}
-	else IsFullyUpgraded = true; return false;
+	else return false;
 }
 
-FString UGear::DrawTheUpgradeCategory()
+void UGear::DrawTheUpgradeCategory()
 {
-	return Categories[FMath::RandRange(0, Categories.Num() - 1)];
+	if(Categories.Num()>0) CurrentUpgradeCategory = Categories[FMath::RandRange(0, Categories.Num() - 1)];
 }
 
-FString UGear::GetDescritpion(FString Category)
+FString UGear::GetDescritpion()
 {
 	if(IsUnlocked)
 	{
-		if (Category == "1st") return DescriptionsCat1[LevelCat1];
-		if (Category == "2nd") return DescriptionsCat2[LevelCat2];
-		if (Category == "3rd") return DescriptionsCat3[LevelCat3];
+		if (CurrentUpgradeCategory == "1st") return DescriptionsCat1[LevelCat1];
+		if (CurrentUpgradeCategory == "2nd") return DescriptionsCat2[LevelCat2];
+		if (CurrentUpgradeCategory == "3rd") return DescriptionsCat3[LevelCat3];
 		else return "No expected case in GetDescription Gear.cpp";
 	}
 	else return UnlockDescription;

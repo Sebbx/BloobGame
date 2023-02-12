@@ -31,11 +31,6 @@ public:
 	FString Panel1Item;
 	FString Panel2Item;
 	FString Panel3Item;
-
-	FString HealthUpgradeCategory;
-	FString CannonUpgradeCategory;
-	FString ShurikensUpgradeCategory;
-	FString ElectroFieldUpgradeCategory;
 	
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	class UTextBlock* NamePanel1;

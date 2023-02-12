@@ -33,17 +33,17 @@ void UCannonWeaponGear::ConstructionForUpgrading()
 	DescriptionsCat2.Add("Bullet +1, Spread +10%");
 	DescriptionsCat2.Add("Bullet +1, Firerate -5%");
 
-	DescriptionsCat3.Add("Firerate +10%");
-	DescriptionsCat3.Add("Firerate +15%");
-	DescriptionsCat3.Add("Firerate +15%, Spread -25%");
+	DescriptionsCat3.Add("Firerate +40%");
+	DescriptionsCat3.Add("Firerate +25%");
+	DescriptionsCat3.Add("Firerate +10%, Spread -35%");
 	
 }
 
-void UCannonWeaponGear::Upgrade(FString Category)
+void UCannonWeaponGear::Upgrade()
 {
 	if(IsUnlocked)
 	{
-		if(Category == "1st")
+		if(CurrentUpgradeCategory == "1st")
 		{
 			switch(LevelCat1)
 			{
@@ -56,22 +56,73 @@ void UCannonWeaponGear::Upgrade(FString Category)
 			case 1:
 				{	
 					Penetration++;
-					FireRate -= FireRate * 0.05;
+					FireRate += FireRate * 0.05;
 					LevelCat1++;
 				} break;
 				
 			case 2:
 				{	
 					Penetration++;
-					FireRate += AngleBetweenProjectiles * 0.1;
+					AngleBetweenProjectiles += AngleBetweenProjectiles * 0.1;
 					LevelCat1++;
 					Categories.Remove("1st");
 				} break;
 			default: break;
 			}
 		}
+		if(CurrentUpgradeCategory == "2nd")
+		{
+			switch (LevelCat2)
+			{
+			case 0:
+				{
+					NumberOfProjectiles++;
+					LevelCat2++;
+				} break;
+			case 1:
+				{
+					NumberOfProjectiles++;
+					AngleBetweenProjectiles += AngleBetweenProjectiles * 0.1;
+					LevelCat2++;
+				} break;
+			case 2:
+				{
+					NumberOfProjectiles++;
+					FireRate += FireRate * 0.05;
+					LevelCat2++;
+					Categories.Remove("2nd");
+				} break;
+			default: break;
+			}
+		}
+		if(CurrentUpgradeCategory == "3rd")
+		{
+			switch (LevelCat3)
+			{
+			case 0:
+				{
+					FireRate -= FireRate * 0.40;
+					LevelCat3++;
+				} break;
+			case 1:
+				{
+					FireRate -= FireRate * 0.25;
+					LevelCat3++;
+				} break;
+			case 2:
+				{
+					FireRate -= FireRate * 0.10;
+					AngleBetweenProjectiles -= AngleBetweenProjectiles * 0.35;
+					LevelCat3++;
+					Categories.Remove("3rd");
+				} break;
+			default: break;
+			}
+		}
+		StartShootingTimer();
 	}
 	else IsUnlocked = true;
+	if(CheckThatisFullyUpgraded()) RemoveItemFromEqList("Cannon");
 }
 void UCannonWeaponGear::BeginPlay()
 {
@@ -81,7 +132,7 @@ void UCannonWeaponGear::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("%i"), Categories.Num());
 	
 	// This timer is managing shooting projectiles
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UCannonWeaponGear::Shoot, FireRate, true, 0.f);
+	StartShootingTimer();
 }
 
 void UCannonWeaponGear::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -117,5 +168,11 @@ void UCannonWeaponGear::AimAtNearestEnemy()
 		LookAtEnemyRotation = UKismetMathLibrary::FindLookAtRotation(ProjectileSpawnLocation,
 			UGameplayStatics::FindNearestActor(ProjectileSpawnLocation, OutActors, Distance)->GetActorLocation());
 	}
+}
+
+void UCannonWeaponGear::StartShootingTimer()
+{
+	GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UCannonWeaponGear::Shoot, FireRate, true, 0.f);
 }
 

@@ -146,10 +146,6 @@ void APlayerPawn::Debug2(const FInputActionValue& Value)
 void APlayerPawn::Debug3(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 3")));
-
-	LevelUpUI->Panel1Item = "Cannon";
-	LevelUpUI->SetPanelName(FText::AsCultureInvariant(LevelUpUI->Panel1Item), 1);
-	LevelUpUI->SetPanelDescription(LevelUpUI->GetDescriptionOfItem(LevelUpUI->Panel1Item), 1);
 }
 
 void APlayerPawn::Debug4(const FInputActionValue& Value)

@@ -37,7 +37,7 @@ void ULevelUpUI::Initialize(APlayerPawn* PlayerPawn, UFloatingPawnMovement* Floa
 
 void ULevelUpUI::DrawUpgradeCategories()
 {
-	CannonUpgradeCategory = CannonWeaponGearRef->DrawTheUpgradeCategory();
+	CannonWeaponGearRef->DrawTheUpgradeCategory();
 }
 
 void ULevelUpUI::DrawItemsForPanels()
@@ -47,12 +47,12 @@ void ULevelUpUI::DrawItemsForPanels()
 	Panel2Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
 	AvailableItems.Remove(Panel2Item);
 	Panel3Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
-	Panel1Item = "Cannon";
+	if(AvailableItems.Contains("Cannon")) Panel1Item = "Cannon";
 }
 
 FText ULevelUpUI::GetDescriptionOfItem(FString Item)
 {
-	if (Item == "Cannon") return FText::AsCultureInvariant(CannonWeaponGearRef->GetDescritpion(CannonUpgradeCategory));
+	if (Item == "Cannon") return FText::AsCultureInvariant(CannonWeaponGearRef->GetDescritpion());
 	//if (Item == "Health") return FText::AsCultureInvariant(HealthComponentRef->GetDescritpion(HealthUpgradeCategory));
 	//if (Item == "Shurikens") return FText::AsCultureInvariant(ShurikensGearRef->GetDescritpion(ShurikensUpgradeCategory));
 	//if (Item == "ElectroField") return FText::AsCultureInvariant(ElectroFieldGearRef->GetDescritpion(ElectroFieldUpgradeCategory));
@@ -61,7 +61,7 @@ FText ULevelUpUI::GetDescriptionOfItem(FString Item)
 
 void ULevelUpUI::UpgradeItem(FString Item)
 {
-	if (Item == "Cannon") CannonWeaponGearRef->Upgrade(CannonUpgradeCategory);
+	if (Item == "Cannon") CannonWeaponGearRef->Upgrade();
 }
 
 void ULevelUpUI::SetPanelName(FText PanelName, int PanelIndex)

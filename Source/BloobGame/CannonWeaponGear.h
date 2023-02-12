@@ -43,7 +43,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = Features)
 	int NumberOfProjectiles = 1;
 
-	void Upgrade(FString Category);
+	void Upgrade();
 private:
 	
 	FActorSpawnParameters ProjectileSpawnParameters;
@@ -56,4 +56,5 @@ private:
 	void ConstructionForUpgrading();
 	void Shoot();
 	void AimAtNearestEnemy();
+	void StartShootingTimer();
 };
