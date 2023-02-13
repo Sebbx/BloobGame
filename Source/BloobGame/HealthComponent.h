@@ -28,6 +28,9 @@ public:
 
 	float MaxHealth = 100.f;
 	float Health = 0.f;
+	float HealthRegenMultiplier = 0;
+
+	void Upgrade();
 
 private:
 	UPROPERTY(EditAnywhere, Category = OnDamage)
@@ -36,11 +39,15 @@ private:
 	UPROPERTY(EditAnywhere, Category = Debug)
 	bool LogHealth = false;
 
-	FTimerHandle InputTimerHandle;
+	FTimerHandle TimerHandle;
+	FTimerHandle HealthRegenTimerHandle;
 
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* Insigator, AActor* DamageCauser);
 
 	void DeHighlight();
 	void Highlight();
+	void ConstructionForUpgrading();
+	void StartHealthRegenTimer();
+	void RegenerateHealth();
 };

@@ -3,19 +3,20 @@
 #include "LevelUpUI.h"
 
 #include "ElectroFieldGear.h"
+#include "MovementGear.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
 #include "Kismet/GameplayStatics.h"
 
-void ULevelUpUI::Initialize(APlayerPawn* PlayerPawn, UFloatingPawnMovement* FloatingPawnMovement, UHealthComponent* HealthComponent, UCannonWeaponGear* CannonWeaponGear, UShurikensGear* ShurikensGear, UElectroFieldGear* ElectroFieldGear)
+void ULevelUpUI::Initialize(APlayerPawn* PlayerPawn, UHealthComponent* HealthComponent, UCannonWeaponGear* CannonWeaponGear, UShurikensGear* ShurikensGear, UElectroFieldGear* ElectroFieldGear, UMovementGear* MovementGear)
 {
 	PlayerPawnRef = PlayerPawn;
-	FloatingPawnMovementRef = FloatingPawnMovement;
 	HealthComponentRef = HealthComponent;
 	CannonWeaponGearRef = CannonWeaponGear;
 	ShurikensGearRef = ShurikensGear;
 	ElectroFieldGearRef = ElectroFieldGear;
+	MovementGearRef = MovementGear;
 
 	AvailableItems = Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->EquipmentList;
 	
@@ -45,6 +46,8 @@ void ULevelUpUI::DrawUpgradeCategories()
 	CannonWeaponGearRef->DrawTheUpgradeCategory();
 	ShurikensGearRef->DrawTheUpgradeCategory();
 	ElectroFieldGearRef->DrawTheUpgradeCategory();
+	HealthComponentRef->DrawTheUpgradeCategory();
+	MovementGearRef->DrawTheUpgradeCategory();
 }
 
 void ULevelUpUI::DrawItemsForPanels()
@@ -52,7 +55,7 @@ void ULevelUpUI::DrawItemsForPanels()
 	if(!AvailableItems.IsEmpty())
 	{
 		Panel1Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
-		if(AvailableItems.Contains("ElectroField")) Panel1Item = "ElectroField"; // TESTING ONLY
+		if(AvailableItems.Contains("Movement")) Panel1Item = "Movement"; // TESTING ONLY
 		AvailableItems.Remove(Panel1Item);
 	}
 
@@ -71,9 +74,10 @@ void ULevelUpUI::DrawItemsForPanels()
 FText ULevelUpUI::GetDescriptionOfItem(FString Item)
 {
 	if (Item == "Cannon") return FText::AsCultureInvariant(CannonWeaponGearRef->GetDescription());
-	//if (Item == "Health") return FText::AsCultureInvariant(HealthComponentRef->GetDescritpion(HealthUpgradeCategory));
 	if (Item == "Shurikens") return FText::AsCultureInvariant(ShurikensGearRef->GetDescription());
 	if (Item == "ElectroField") return FText::AsCultureInvariant(ElectroFieldGearRef->GetDescription());
+	if (Item == "Health") return FText::AsCultureInvariant(HealthComponentRef->GetDescription());
+	if (Item == "Movement") return FText::AsCultureInvariant(MovementGearRef->GetDescription());
 	else return FText::AsCultureInvariant("");
 }
 
@@ -82,6 +86,8 @@ void ULevelUpUI::UpgradeItem(FString Item)
 	if (Item == "Cannon") CannonWeaponGearRef->Upgrade();
 	if (Item == "Shurikens") ShurikensGearRef->Upgrade();
 	if (Item == "ElectroField") ElectroFieldGearRef->Upgrade();
+	if (Item == "Health") HealthComponentRef->Upgrade();
+	if (Item == "Movement") MovementGearRef->Upgrade();
 }
 
 void ULevelUpUI::SetPanelName(FText PanelName, int PanelIndex)

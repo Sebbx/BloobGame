@@ -14,12 +14,11 @@ class BLOOBGAME_API APlayerPawn : public APawn
 
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputMappingContext* DefaultMappingContext;
-
 	
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputAction* IAMove;
-
-	UPROPERTY(EditAnywhere, Category = Components)
+	
+	UPROPERTY(EditAnywhere, Category = Gear)
 	class UFloatingPawnMovement* FloatingPawnMovement;
 
 	UPROPERTY(EditAnywhere, Category = Components)
@@ -46,6 +45,9 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UElectroFieldGear* ElectroField;
 
+	UPROPERTY(EditAnywhere, Category = Gear)
+	class UMovementGear* MovementGear;
+
 	// DEBUG, DELETE LATER ************************
 
 	UPROPERTY(EditAnywhere, Category = Input)
@@ -63,15 +65,28 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputAction* IADebug5;
 
-
 public:
-	UPROPERTY(EditAnywhere, Category = Gear)
-	class UShurikensGear* Shurikens;
 	// Sets default values for this pawn's properties
 	APlayerPawn();
 	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere)
+	float MaxHealth = 10;
+
+	UPROPERTY(EditAnywhere)
+	float CollectingRange = 100;
+
+	
+	UPROPERTY(EditAnywhere, Category = Gear)
+	class UShurikensGear* Shurikens;
+	
 	UPROPERTY(EditAnywhere, Category = GearClass)
 	TArray<FString> EquipmentList;
+
+	void SetMaxSpeed(float NewMaxSpeed);
+	float GetMaxSpeed();
 
 protected:
 	// Called when the game starts or when spawned
@@ -84,13 +99,6 @@ protected:
 	void Debug4(const FInputActionValue& Value);
 	void Debug5(const FInputActionValue& Value);
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-
-	UPROPERTY(EditAnywhere)
-	float MaxHealth = 10;
 private:
 	UPROPERTY(EditAnywhere, Category = OnDamage)
 	UMaterial* BaseMaterial;

@@ -25,6 +25,7 @@ class BLOOBGAME_API ULevelUpUI : public UUserWidget
 	UCannonWeaponGear* CannonWeaponGearRef;
 	UShurikensGear* ShurikensGearRef;
 	UElectroFieldGear* ElectroFieldGearRef;
+	UMovementGear* MovementGearRef;
 
 public:
 	FString Panel1Item;
@@ -69,7 +70,7 @@ public:
 	void Button3Clicked();
 	void ClearLevelUpMenu();
 	
-	void Initialize(APlayerPawn* PlayerPawn, UFloatingPawnMovement* FloatingPawnMovement, UHealthComponent* HealthComponent, UCannonWeaponGear* CannonWeaponGear, UShurikensGear* ShurikensGear, UElectroFieldGear* ElectroFieldGear);
+	void Initialize(APlayerPawn* PlayerPawn, UHealthComponent* HealthComponent, UCannonWeaponGear* CannonWeaponGear, UShurikensGear* ShurikensGear, UElectroFieldGear* ElectroFieldGear, UMovementGear* MovementGear);
 	void DrawItemsForPanels();
 	void DrawUpgradeCategories();
 	

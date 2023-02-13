@@ -67,7 +67,6 @@ void UCannonWeaponGear::Upgrade()
 			default: break;
 			}
 		}
-		
 		if(CurrentUpgradeCategory == "2nd")
 		{
 			switch (LevelCat2)
@@ -93,7 +92,6 @@ void UCannonWeaponGear::Upgrade()
 			default: break;
 			}
 		}
-		
 		if(CurrentUpgradeCategory == "3rd")
 		{
 			switch (LevelCat3)

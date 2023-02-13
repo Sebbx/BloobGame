@@ -7,6 +7,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "HealthComponent.h"
+#include "MovementGear.h"
 #include "ShurikensGear.h"
 #include "Blueprint/UserWidget.h"
 #include "Camera/CameraComponent.h"
@@ -30,6 +31,7 @@ APlayerPawn::APlayerPawn()
 	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
 	Shurikens = CreateDefaultSubobject<UShurikensGear>(TEXT("Shurikens"));
 	ShurikensPivot = CreateDefaultSubobject<USceneComponent>(TEXT("Pivot"));
+	MovementGear = CreateDefaultSubobject<UMovementGear>(TEXT("Movement"));
 	
 	RootComponent = CapsuleComponent;
 	SpringArmComponent->SetupAttachment(CapsuleComponent);
@@ -37,17 +39,28 @@ APlayerPawn::APlayerPawn()
 	BaseMesh->SetupAttachment(CapsuleComponent);
 	Shurikens->ShurikensPivot = ShurikensPivot;
 
-	EquipmentList.Add("Movement");
-	EquipmentList.Add("Health");
 	EquipmentList.Add("Cannon");
 	EquipmentList.Add("Shurikens");
 	EquipmentList.Add("ElectroField");
+	EquipmentList.Add("Health");
+	EquipmentList.Add("Movement");
+}
+
+void APlayerPawn::SetMaxSpeed(float NewMaxSpeed)
+{
+	FloatingPawnMovement->MaxSpeed = NewMaxSpeed;
+}
+
+float APlayerPawn::GetMaxSpeed()
+{
+	return FloatingPawnMovement->MaxSpeed;
 }
 
 // Called when the game starts or when spawned
 void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
+	//FloatingPawnMovement->MaxSpeed = 50;
 	ShurikensPivot->AttachToComponent(RootComponent, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	
 	if (const APlayerController* PlayerController = Cast<APlayerController>(Controller))
@@ -126,7 +139,7 @@ void APlayerPawn::Debug1(const FInputActionValue& Value)
 	if (LevelUpUIClass)
 	{
 		LevelUpUI = CreateWidget<ULevelUpUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), LevelUpUIClass);
-		LevelUpUI->Initialize(this, FloatingPawnMovement, HealthComponent, Cannon, Shurikens, ElectroField);
+		LevelUpUI->Initialize(this, HealthComponent, Cannon, Shurikens, ElectroField, MovementGear);
 		LevelUpUI->AddToPlayerScreen();
 	}
 }

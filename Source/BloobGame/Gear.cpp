@@ -16,11 +16,27 @@ UGear::UGear()
 
 bool UGear::CheckThatIsFullyUpgraded()
 {
-	if ((LevelCat1 >= DescriptionsCat1.Num()) && (LevelCat2 >= DescriptionsCat2.Num()) && (LevelCat3 >= DescriptionsCat3.Num()))
+	if(LevelCat1 >= DescriptionsCat1.Num())
 	{
-		return true;
+		if(DescriptionsCat2.IsEmpty())
+		{
+			return true;
+		}
+		if (LevelCat2 >= DescriptionsCat2.Num())
+		{
+			if(DescriptionsCat3.IsEmpty())
+			{
+				return true;
+			}
+			if (LevelCat2 >= DescriptionsCat2.Num())
+			{
+				return true;
+			}
+			return false;
+		}
+		return false;
 	}
-	else return false;
+	return false;
 }
 
 void UGear::DrawTheUpgradeCategory()
