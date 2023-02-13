@@ -11,7 +11,7 @@ class BLOOBGAME_API UElectroFieldGear : public UGear
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, Category = Gear)
-	TSubclassOf<class AElectroField> ElectroFieldClass;
+	TSubclassOf<class AElectroField> ElectroFieldClass; // TODO allocate this in player pawn to avoid this dumb fucking shit disappearing
 
 public:	
 	// Sets default values for this component's properties
@@ -25,12 +25,14 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	void Upgrade();
+
 private:
 	UPROPERTY(EditAnywhere, Category = Properties)
-	float DeployRate = 1;
+	float DischargeRate = 1;
 
 	UPROPERTY(EditAnywhere, Category = Properties)
-	float SpawnZOfsset = 0;
+	float SpawnZOffset = 0;
 
 	UPROPERTY(EditAnywhere, Category = Properties)
 	float Damage = 0.2f;
@@ -39,7 +41,7 @@ private:
 	float ScalingUpRate = 0.1;
 
 	UPROPERTY(EditAnywhere, Category = Properties)
-	float FullyScaledTime = 2;
+	float Duration = 2;
 
 	UPROPERTY(EditAnywhere, Category = Properties)
 	float TargetScale = 1;
@@ -47,6 +49,9 @@ private:
 	FTimerHandle TimerHandle;
 	
 	void GenerateElectroField();
+	void StartEFieldGeneratorTimer();
+	void ConstructionForUpgrading();
 	
 	
 };
+

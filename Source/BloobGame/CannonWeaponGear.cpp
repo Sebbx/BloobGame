@@ -13,9 +13,6 @@ UCannonWeaponGear::UCannonWeaponGear()
 
 void UCannonWeaponGear::ConstructionForUpgrading()
 {
-	IsUnlocked = false;
-	IsFullyUpgraded = false;
-
 	LevelCat1 = 0;
 	LevelCat2 = 0;
 	LevelCat3 = 0;
@@ -70,6 +67,7 @@ void UCannonWeaponGear::Upgrade()
 			default: break;
 			}
 		}
+		
 		if(CurrentUpgradeCategory == "2nd")
 		{
 			switch (LevelCat2)
@@ -95,6 +93,7 @@ void UCannonWeaponGear::Upgrade()
 			default: break;
 			}
 		}
+		
 		if(CurrentUpgradeCategory == "3rd")
 		{
 			switch (LevelCat3)
@@ -122,14 +121,12 @@ void UCannonWeaponGear::Upgrade()
 		StartShootingTimer();
 	}
 	else IsUnlocked = true;
-	if(CheckThatisFullyUpgraded()) RemoveItemFromEqList("Cannon");
+	if(CheckThatIsFullyUpgraded()) RemoveItemFromEqList("Cannon");
 }
 void UCannonWeaponGear::BeginPlay()
 {
 	Super::BeginPlay();
 	ConstructionForUpgrading();
-
-	UE_LOG(LogTemp, Warning, TEXT("%i"), Categories.Num());
 	
 	// This timer is managing shooting projectiles
 	StartShootingTimer();
@@ -172,7 +169,7 @@ void UCannonWeaponGear::AimAtNearestEnemy()
 
 void UCannonWeaponGear::StartShootingTimer()
 {
-	GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
+	if(TimerHandle.IsValid()) GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
 	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UCannonWeaponGear::Shoot, FireRate, true, 0.f);
 }
 

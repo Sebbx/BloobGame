@@ -10,7 +10,6 @@
 #include "ShurikensGear.h"
 #include "Blueprint/UserWidget.h"
 #include "Camera/CameraComponent.h"
-#include "Components/Button.h"
 #include "GameFramework/FloatingPawnMovement.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -21,6 +20,7 @@ APlayerPawn::APlayerPawn()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	ElectroField = CreateDefaultSubobject<UElectroFieldGear>(TEXT("ElectroField"));
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Component"));
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
@@ -29,7 +29,6 @@ APlayerPawn::APlayerPawn()
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
 	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
 	Shurikens = CreateDefaultSubobject<UShurikensGear>(TEXT("Shurikens"));
-	ElectroField = CreateDefaultSubobject<UElectroFieldGear>(TEXT("ElectroField"));
 	ShurikensPivot = CreateDefaultSubobject<USceneComponent>(TEXT("Pivot"));
 	
 	RootComponent = CapsuleComponent;
@@ -78,7 +77,6 @@ void APlayerPawn::BeginPlay()
 // Called every frame
 void APlayerPawn::Tick(float DeltaTime)
 {
-	Cannon->IsFullyUpgraded = Cannon->CheckThatisFullyUpgraded();
 	Super::Tick(DeltaTime);
 }
 

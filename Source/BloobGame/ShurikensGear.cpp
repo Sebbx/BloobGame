@@ -13,9 +13,6 @@ UShurikensGear::UShurikensGear()
 
 void UShurikensGear::ConstructionForUpgrading()
 {
-	IsUnlocked = false;
-	IsFullyUpgraded = false;
-
 	LevelCat1 = 0;
 	LevelCat2 = 0;
 	LevelCat3 = 0;
@@ -108,7 +105,7 @@ void UShurikensGear::Upgrade()
 		}
 	}
 	else IsUnlocked = true;
-	if(CheckThatisFullyUpgraded()) RemoveItemFromEqList("Shurikens");
+	if(CheckThatIsFullyUpgraded()) RemoveItemFromEqList("Shurikens");
 	DeployShurikens();
 }
 

@@ -1,8 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Gear.h"
-
 #include "PlayerPawn.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -16,7 +14,7 @@ UGear::UGear()
 	// ...
 }
 
-bool UGear::CheckThatisFullyUpgraded()
+bool UGear::CheckThatIsFullyUpgraded()
 {
 	if ((LevelCat1 >= DescriptionsCat1.Num()) && (LevelCat2 >= DescriptionsCat2.Num()) && (LevelCat3 >= DescriptionsCat3.Num()))
 	{
@@ -30,7 +28,7 @@ void UGear::DrawTheUpgradeCategory()
 	if(Categories.Num()>0) CurrentUpgradeCategory = Categories[FMath::RandRange(0, Categories.Num() - 1)];
 }
 
-FString UGear::GetDescritpion()
+FString UGear::GetDescription()
 {
 	if(IsUnlocked)
 	{
@@ -44,6 +42,10 @@ FString UGear::GetDescritpion()
 
 void UGear::RemoveItemFromEqList(FString ItemName)
 {
-	Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->EquipmentList.Remove(ItemName);
+	if(Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->EquipmentList.Contains(ItemName))
+	{
+		Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->EquipmentList.Remove(ItemName);
+	}
+	else UE_LOG(LogTemp, Error, TEXT("Gear.cpp | %s - Not found in EQ List"));
 }
 

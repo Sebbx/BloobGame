@@ -44,24 +44,36 @@ void ULevelUpUI::DrawUpgradeCategories()
 {
 	CannonWeaponGearRef->DrawTheUpgradeCategory();
 	ShurikensGearRef->DrawTheUpgradeCategory();
+	ElectroFieldGearRef->DrawTheUpgradeCategory();
 }
 
 void ULevelUpUI::DrawItemsForPanels()
 {
-	Panel1Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
-	AvailableItems.Remove(Panel1Item);
-	Panel2Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
-	AvailableItems.Remove(Panel2Item);
-	Panel3Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
-	if(AvailableItems.Contains("Shurikens")) Panel1Item = "Shurikens";
+	if(!AvailableItems.IsEmpty())
+	{
+		Panel1Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
+		if(AvailableItems.Contains("ElectroField")) Panel1Item = "ElectroField"; // TESTING ONLY
+		AvailableItems.Remove(Panel1Item);
+	}
+
+	if(!AvailableItems.IsEmpty())
+	{
+		Panel2Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
+		AvailableItems.Remove(Panel2Item);
+	}
+
+	if(!AvailableItems.IsEmpty())
+	{
+		Panel3Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
+	}
 }
 
 FText ULevelUpUI::GetDescriptionOfItem(FString Item)
 {
-	if (Item == "Cannon") return FText::AsCultureInvariant(CannonWeaponGearRef->GetDescritpion());
+	if (Item == "Cannon") return FText::AsCultureInvariant(CannonWeaponGearRef->GetDescription());
 	//if (Item == "Health") return FText::AsCultureInvariant(HealthComponentRef->GetDescritpion(HealthUpgradeCategory));
-	if (Item == "Shurikens") return FText::AsCultureInvariant(ShurikensGearRef->GetDescritpion());
-	//if (Item == "ElectroField") return FText::AsCultureInvariant(ElectroFieldGearRef->GetDescritpion(ElectroFieldUpgradeCategory));
+	if (Item == "Shurikens") return FText::AsCultureInvariant(ShurikensGearRef->GetDescription());
+	if (Item == "ElectroField") return FText::AsCultureInvariant(ElectroFieldGearRef->GetDescription());
 	else return FText::AsCultureInvariant("");
 }
 
@@ -69,6 +81,7 @@ void ULevelUpUI::UpgradeItem(FString Item)
 {
 	if (Item == "Cannon") CannonWeaponGearRef->Upgrade();
 	if (Item == "Shurikens") ShurikensGearRef->Upgrade();
+	if (Item == "ElectroField") ElectroFieldGearRef->Upgrade();
 }
 
 void ULevelUpUI::SetPanelName(FText PanelName, int PanelIndex)
@@ -96,25 +109,34 @@ void ULevelUpUI::SetPanelDescription(FText PanelDescription, int PanelIndex)
 void ULevelUpUI::Button1Clicked()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Button1 Clicked")));
-	UpgradeItem(Panel1Item);
-	
-	ClearLevelUpMenu();
+
+	if(Panel1Item != "")
+	{
+		UpgradeItem(Panel1Item);
+		ClearLevelUpMenu();
+	}	
 }
 
 void ULevelUpUI::Button2Clicked()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Button2 Clicked")));
-	UpgradeItem(Panel2Item);
-	
-	ClearLevelUpMenu();
+
+	if(Panel2Item != "")
+	{
+		UpgradeItem(Panel2Item);
+		ClearLevelUpMenu();
+	}
 }
 
 void ULevelUpUI::Button3Clicked()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Button3 Clicked")));
-	UpgradeItem(Panel3Item);
-	
-	ClearLevelUpMenu();
+
+	if(Panel3Item != "")
+	{
+		UpgradeItem(Panel3Item);
+		ClearLevelUpMenu();
+	}
 }
 
 void ULevelUpUI::ClearLevelUpMenu()
