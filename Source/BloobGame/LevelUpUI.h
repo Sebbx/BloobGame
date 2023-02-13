@@ -63,6 +63,11 @@ public:
 	
 	UFUNCTION()
 	void Button1Clicked();
+	UFUNCTION()
+	void Button2Clicked();
+	UFUNCTION()
+	void Button3Clicked();
+	void ClearLevelUpMenu();
 	
 	void Initialize(APlayerPawn* PlayerPawn, UFloatingPawnMovement* FloatingPawnMovement, UHealthComponent* HealthComponent, UCannonWeaponGear* CannonWeaponGear, UShurikensGear* ShurikensGear, UElectroFieldGear* ElectroFieldGear);
 	void DrawItemsForPanels();

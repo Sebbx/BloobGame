@@ -128,7 +128,6 @@ void APlayerPawn::Debug1(const FInputActionValue& Value)
 	if (LevelUpUIClass)
 	{
 		LevelUpUI = CreateWidget<ULevelUpUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), LevelUpUIClass);
-		LevelUpUI->ButtonPanel1->OnClicked.AddDynamic(LevelUpUI, &ULevelUpUI::Button1Clicked);
 		LevelUpUI->Initialize(this, FloatingPawnMovement, HealthComponent, Cannon, Shurikens, ElectroField);
 		LevelUpUI->AddToPlayerScreen();
 	}
@@ -137,10 +136,6 @@ void APlayerPawn::Debug1(const FInputActionValue& Value)
 void APlayerPawn::Debug2(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 2")));
-	if(LevelUpUI)
-	{
-		LevelUpUI->RemoveFromParent();
-	}
 }
 
 void APlayerPawn::Debug3(const FInputActionValue& Value)

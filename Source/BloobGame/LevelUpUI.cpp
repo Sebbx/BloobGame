@@ -4,6 +4,7 @@
 
 #include "ElectroFieldGear.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
+#include "Components/Button.h"
 #include "Components/TextBlock.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -33,6 +34,10 @@ void ULevelUpUI::Initialize(APlayerPawn* PlayerPawn, UFloatingPawnMovement* Floa
 	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = true;
 	GetWorld()->GetFirstPlayerController()->bEnableClickEvents = true;
 	GetWorld()->GetFirstPlayerController()->bEnableMouseOverEvents = true;
+
+	ButtonPanel1->OnClicked.AddDynamic(this, &ULevelUpUI::Button1Clicked);
+	ButtonPanel2->OnClicked.AddDynamic(this, &ULevelUpUI::Button2Clicked);
+	ButtonPanel3->OnClicked.AddDynamic(this, &ULevelUpUI::Button3Clicked);
 }
 
 void ULevelUpUI::DrawUpgradeCategories()
@@ -92,6 +97,28 @@ void ULevelUpUI::Button1Clicked()
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Button1 Clicked")));
 	UpgradeItem(Panel1Item);
+	
+	ClearLevelUpMenu();
+}
+
+void ULevelUpUI::Button2Clicked()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Button2 Clicked")));
+	UpgradeItem(Panel2Item);
+	
+	ClearLevelUpMenu();
+}
+
+void ULevelUpUI::Button3Clicked()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Button3 Clicked")));
+	UpgradeItem(Panel3Item);
+	
+	ClearLevelUpMenu();
+}
+
+void ULevelUpUI::ClearLevelUpMenu()
+{
 	TArray<UUserWidget*> FoundWidgets;
 	UWidgetBlueprintLibrary::GetAllWidgetsOfClass(GetWorld(), FoundWidgets, StaticClass(), false);
 
