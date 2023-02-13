@@ -3,6 +3,8 @@
 
 #include "ShurikenProjectile.h"
 
+#include "PlayerPawn.h"
+#include "ShurikensGear.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -14,12 +16,14 @@ AShurikenProjectile::AShurikenProjectile()
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Shuriken Mesh"));
 
 	RootComponent = BaseMesh;
+
 }
 
 // Called when the game starts or when spawned
 void AShurikenProjectile::BeginPlay()
 {
 	Super::BeginPlay();
+	Damage = Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->Shurikens->Damage;
 
 	if (BaseMesh)
 	{

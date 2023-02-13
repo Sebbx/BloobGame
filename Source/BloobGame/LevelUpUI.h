@@ -26,7 +26,6 @@ class BLOOBGAME_API ULevelUpUI : public UUserWidget
 	UShurikensGear* ShurikensGearRef;
 	UElectroFieldGear* ElectroFieldGearRef;
 
-
 public:
 	FString Panel1Item;
 	FString Panel2Item;

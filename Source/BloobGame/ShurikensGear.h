@@ -37,11 +37,19 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	float RotationSpeed = 100;
+
+	float Damage = 1;
+
+	bool CanPivotRotate = false;
+
+	void Upgrade();
 private:
 
 	TArray<AShurikenProjectile*> Projectiles;
 
 	void DeployShurikens();
 	void DestroyShurikens();
+
+	void ConstructionForUpgrading();
 		
 };
