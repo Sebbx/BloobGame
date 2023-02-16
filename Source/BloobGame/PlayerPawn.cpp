@@ -8,6 +8,7 @@
 #include "EnhancedInputComponent.h"
 #include "HealthComponent.h"
 #include "MovementGear.h"
+#include "PlayerHUDUI.h"
 #include "ShurikensGear.h"
 #include "Blueprint/UserWidget.h"
 #include "Camera/CameraComponent.h"
@@ -32,6 +33,7 @@ APlayerPawn::APlayerPawn()
 	Shurikens = CreateDefaultSubobject<UShurikensGear>(TEXT("Shurikens"));
 	ShurikensPivot = CreateDefaultSubobject<USceneComponent>(TEXT("Pivot"));
 	MovementGear = CreateDefaultSubobject<UMovementGear>(TEXT("Movement"));
+	ShieldMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShieldMesh"));
 	
 	RootComponent = CapsuleComponent;
 	SpringArmComponent->SetupAttachment(CapsuleComponent);
@@ -46,15 +48,6 @@ APlayerPawn::APlayerPawn()
 	EquipmentList.Add("Movement");
 }
 
-void APlayerPawn::SetMaxSpeed(float NewMaxSpeed)
-{
-	FloatingPawnMovement->MaxSpeed = NewMaxSpeed;
-}
-
-float APlayerPawn::GetMaxSpeed()
-{
-	return FloatingPawnMovement->MaxSpeed;
-}
 
 // Called when the game starts or when spawned
 void APlayerPawn::BeginPlay()
@@ -85,6 +78,20 @@ void APlayerPawn::BeginPlay()
 		}
 		else UE_LOG(LogTemp, Error, TEXT("APlayerPawn: One or both Materials for HealthComponent is not set"));
 	}
+	
+	if(ShieldMesh)
+	{
+		ShieldMesh->AttachToComponent(RootComponent, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+		ShieldMesh->SetRelativeLocation(FVector(0,0,-130));
+		ShieldMesh->SetVisibility(false);
+		HealthComponent->ShieldMeshRef = ShieldMesh;
+	}
+	else UE_LOG(LogTemp, Error, TEXT("Shield mesh is not set!"));
+
+	PlayerHudui = CreateWidget<UPlayerHUDUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), PlayerHUDUIClass);
+	PlayerHudui->SetReferences(&HealthComponent->Health, &HealthComponent->Shield);
+	PlayerHudui->AddToPlayerScreen();
+	//ShieldGear->Shield = 10;
 }
 
 // Called every frame
@@ -132,6 +139,16 @@ void APlayerPawn::Move(const FInputActionValue& Value)
 	}
 }
 
+void APlayerPawn::SetMaxSpeed(float NewMaxSpeed)
+{
+	FloatingPawnMovement->MaxSpeed = NewMaxSpeed;
+}
+
+float APlayerPawn::GetMaxSpeed()
+{
+	return FloatingPawnMovement->MaxSpeed;
+}
+
 void APlayerPawn::Debug1(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 1")));
@@ -147,11 +164,13 @@ void APlayerPawn::Debug1(const FInputActionValue& Value)
 void APlayerPawn::Debug2(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 2")));
+	HealthComponent->ActivateShield();
 }
 
 void APlayerPawn::Debug3(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 3")));
+	HealthComponent->DeactivateShield();
 }
 
 void APlayerPawn::Debug4(const FInputActionValue& Value)

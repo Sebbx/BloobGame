@@ -26,11 +26,32 @@ public:
 	UMaterial* BaseMaterial;
 	UMaterial* OnDamageMaterial;
 
+	UPROPERTY(EditAnywhere)
 	float MaxHealth = 100.f;
+	UPROPERTY(EditAnywhere)
 	float Health = 0.f;
+	UPROPERTY(EditAnywhere)
 	float HealthRegenMultiplier = 0;
 
+	UPROPERTY(EditAnywhere)
+	float MaxShield = 10;
+	UPROPERTY(EditAnywhere)
+	float Shield = 0;
+	UPROPERTY(EditAnywhere)
+	float ShieldRegenValue = 0.5;
+	UPROPERTY(EditAnywhere)
+	float ShieldRegenDelay = 2;
+
+	UPROPERTY(EditAnywhere)
+	bool HasShield = false;
+
+	class UStaticMeshComponent* ShieldMeshRef;
+
 	void Upgrade();
+
+	// Shield
+	void ActivateShield();
+	void DeactivateShield();
 
 private:
 	UPROPERTY(EditAnywhere, Category = OnDamage)
@@ -39,8 +60,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = Debug)
 	bool LogHealth = false;
 
-	FTimerHandle TimerHandle;
+	FTimerHandle HighlightTimerHandle;
 	FTimerHandle HealthRegenTimerHandle;
+	FTimerHandle ShieldRegenTimerHandle;
 
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* Insigator, AActor* DamageCauser);
@@ -50,4 +72,6 @@ private:
 	void ConstructionForUpgrading();
 	void StartHealthRegenTimer();
 	void RegenerateHealth();
+	void StartShieldRegenTimer();
+	void RegenerateShield();
 };

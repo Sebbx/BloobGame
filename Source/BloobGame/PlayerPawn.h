@@ -18,11 +18,8 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Input)
 	class UInputAction* IAMove;
 	
-	UPROPERTY(EditAnywhere, Category = Gear)
-	class UFloatingPawnMovement* FloatingPawnMovement;
-
 	UPROPERTY(EditAnywhere, Category = Components)
-	class UHealthComponent* HealthComponent;
+	class UFloatingPawnMovement* FloatingPawnMovement;
 	
 	UPROPERTY(EditAnywhere, Category = Components)
 	class USpringArmComponent* SpringArmComponent;
@@ -33,11 +30,23 @@ class BLOOBGAME_API APlayerPawn : public APawn
 	UPROPERTY(EditAnywhere, Category = Components)
 	class USceneComponent* ShurikensPivot;
 
-	UPROPERTY(EditAnywhere, Category = Collision)
+	UPROPERTY(EditAnywhere, Category = Components)
 	class UCapsuleComponent* CapsuleComponent;
 	
 	UPROPERTY(EditAnywhere, Category = Meshes)
 	class UStaticMeshComponent* BaseMesh;
+	
+	UPROPERTY(EditAnywhere, Category = Meshes)
+	class UStaticMeshComponent* ShieldMesh;
+
+	UPROPERTY(EditAnywhere, Category = OnDamage)
+	UMaterial* BaseMaterial;
+
+	UPROPERTY(EditAnywhere, Category = OnDamage)
+	UMaterial* OnDamageMaterial;
+
+	UPROPERTY(EditAnywhere, Category = Gear)
+	class UHealthComponent* HealthComponent;
 
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UCannonWeaponGear* Cannon;
@@ -47,6 +56,18 @@ class BLOOBGAME_API APlayerPawn : public APawn
 
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UMovementGear* MovementGear;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class ULevelUpUI> LevelUpUIClass;
+	
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class UPlayerHUDUI> PlayerHUDUIClass;
+
+	UPROPERTY()
+	class ULevelUpUI* LevelUpUI;
+
+	UPROPERTY()
+	class UPlayerHUDUI* PlayerHudui;
 
 	// DEBUG, DELETE LATER ************************
 
@@ -98,18 +119,5 @@ protected:
 	void Debug3(const FInputActionValue& Value);
 	void Debug4(const FInputActionValue& Value);
 	void Debug5(const FInputActionValue& Value);
-
-private:
-	UPROPERTY(EditAnywhere, Category = OnDamage)
-	UMaterial* BaseMaterial;
-
-	UPROPERTY(EditAnywhere, Category = OnDamage)
-	UMaterial* OnDamageMaterial;
-
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<class ULevelUpUI> LevelUpUIClass;
-
-	UPROPERTY()
-	class ULevelUpUI* LevelUpUI;
 	
 };
