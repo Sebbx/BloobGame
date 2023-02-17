@@ -15,6 +15,8 @@ AExperienceCrystal::AExperienceCrystal()
 
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base mesh"));
 	RangeCollider = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Collider"));
+
+	RootComponent = BaseMesh;
 }
 
 // Called when the game starts or when spawned

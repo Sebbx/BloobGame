@@ -27,6 +27,10 @@ void AEnemy::BeginPlay()
 	Super::BeginPlay();
 
 	SpawnDefaultController();
+	if(GetController())
+	{
+		AIController = Cast<AAIController>(GetController());
+	}
 	
 	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
@@ -47,9 +51,8 @@ void AEnemy::BeginPlay()
 void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
-	AAIController* AIController = Cast<AAIController>(GetController());
-	if (AIController )AIController->MoveToLocation(PlayerPawn->GetActorLocation(), AcceptableRadius);
+
+	if(AIController) AIController->MoveToLocation(PlayerPawn->GetActorLocation(), AcceptableRadius);
 	
 	HandleAttack();
 }

@@ -24,23 +24,38 @@ class BLOOBGAME_API ALevel1 : public ALevelScriptActor
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AEnemy> BlooboxClass;
 
-	UPROPERTY(EditAnywhere)
-	float SpawnDistanceFromPlayer = 1000;
-
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = Spawning)
 	float LevelTimerRate = 1;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = Spawning)
 	float BloobeSpawnTimerRate = 3;
 
-	UPROPERTY(EditAnywhere)
-	float BloobarSpawnTimerRate = 10;
+	UPROPERTY(EditAnywhere, Category = Spawning)
+	float BloobeSpawnRateMultiplayer = .95;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = Spawning)
+	float BloobarSpawnTimerRate = 10;
+	
+	UPROPERTY(EditAnywhere, Category = Spawning)
+	float BloobarSpawnRateMultiplayer = .95;
+
+	UPROPERTY(EditAnywhere, Category = Spawning)
+	int BloobarMinuteActivation = 5;
+	
+	UPROPERTY(EditAnywhere, Category = Spawning)
 	float BlooboxSpawnTimerRate = 30;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = Spawning)
+	float BlooboxSpawnRateMultiplayer = .95;
+
+	UPROPERTY(EditAnywhere, Category = Spawning)
+	int BlooboxMinuteActivation = 10;
+	
+	UPROPERTY(EditAnywhere, Category = Spawning)
 	float SpawnDistance = 500;
+		
+	UPROPERTY(EditAnywhere, Category = Spawning)
+	float InitialTimeDilation = 1;
 	
 	int Minutes = 0;
 	int Seconds = 0;

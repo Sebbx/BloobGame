@@ -109,6 +109,8 @@ public:
 
 	int* MinutesRef;
 	int* SecondsRef;
+
+	float *TimeDilation;
 	
 	float GetMaxSpeed();
 	void SetMaxSpeed(float NewMaxSpeed);

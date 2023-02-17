@@ -158,4 +158,5 @@ void ULevelUpUI::ClearLevelUpMenu()
 	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = false;
 	GetWorld()->GetFirstPlayerController()->bEnableClickEvents = false;
 	GetWorld()->GetFirstPlayerController()->bEnableMouseOverEvents = false;
+	UGameplayStatics::SetGlobalTimeDilation(GetWorld(), *PlayerPawnRef->TimeDilation);
 }

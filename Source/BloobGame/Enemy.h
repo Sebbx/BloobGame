@@ -26,6 +26,7 @@ public:
 	void Die();
 
 private:
+	class AAIController* AIController;
 	
 	UPROPERTY(EditAnywhere, Category = Components)
 	class UHealthComponent* HealthComponent;
