@@ -92,7 +92,7 @@ void APlayerPawn::BeginPlay()
 	else UE_LOG(LogTemp, Error, TEXT("Shield mesh is not set!"));
 
 	PlayerHudui = CreateWidget<UPlayerHUDUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), PlayerHUDUIClass);
-	PlayerHudui->SetReferences(&HealthComponent->Health, &HealthComponent->Shield);
+	PlayerHudui->SetReferences(&HealthComponent->Health, &HealthComponent->Shield, &ExperienceSystem->ExperiencePoints, &ExperienceSystem->ExpToNextLevel, &ExperienceLevel);
 	PlayerHudui->AddToPlayerScreen();
 
 	//ShieldGear->Shield = 10;

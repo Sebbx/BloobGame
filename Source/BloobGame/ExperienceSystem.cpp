@@ -40,6 +40,7 @@ void UExperienceSystem::AddExp(float Exp)
 	if(ExperiencePoints >= ExpToNextLevel)
 	{
 		Cast<APlayerPawn>(GetOwner())->ShowLevelUpScreen();
+		Cast<APlayerPawn>(GetOwner())->ExperienceLevel++;
 		ExperiencePoints = 0;
 		ExpToNextLevel += ExpToNextLevel * ExpGrowth;
 	}

@@ -15,8 +15,11 @@ class BLOOBGAME_API UPlayerHUDUI : public UUserWidget
 	GENERATED_BODY()
 
 	bool ReferencesSet = false;
+	int* CurrentLevelRef; 
 	float* HealthPointsRef;
 	float* ShieldPoinsRef;
+	float* CurrentXPRef;
+	float* NextLevelXPRef;
 
 public:
 	virtual void NativeTick(const FGeometry& MyGeometry, float DeltaTime) override;
@@ -27,5 +30,11 @@ public:
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	class UTextBlock* ShieldPoints;
 
-	void SetReferences(float* HealthPoints, float* ShieldPoints);
+	UPROPERTY(EditAnywhere, meta = (BindWidget))
+	class UTextBlock* CurrentLevel;
+
+	UPROPERTY(EditAnywhere, meta = (BindWidget))
+	class UProgressBar* ExperienceBar;
+
+	void SetReferences(float *HealthPoints, float *ShieldPoints, float *CurrentXP, float *NextLevelXP, int *Level);
 };

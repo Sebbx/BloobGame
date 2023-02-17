@@ -105,11 +105,12 @@ public:
 	UPROPERTY(EditAnywhere, Category = GearClass)
 	TArray<FString> EquipmentList;
 
+	int ExperienceLevel = 1;
+	
+	float GetMaxSpeed();
 	void SetMaxSpeed(float NewMaxSpeed);
 	void ShowLevelUpScreen();
 	void Die();
-	float GetMaxSpeed();
-	
 
 protected:
 	// Called when the game starts or when spawned
@@ -121,5 +122,6 @@ protected:
 	void Debug3(const FInputActionValue& Value);
 	void Debug4(const FInputActionValue& Value);
 	void Debug5(const FInputActionValue& Value);
+
 	
 };
