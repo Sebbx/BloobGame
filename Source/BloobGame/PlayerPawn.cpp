@@ -6,6 +6,8 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "ExperienceCrystal.h"
+#include "ExperienceSystem.h"
 #include "HealthComponent.h"
 #include "MovementGear.h"
 #include "PlayerHUDUI.h"
@@ -28,6 +30,7 @@ APlayerPawn::APlayerPawn()
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	FloatingPawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Floating"));
+	ExperienceSystem = CreateDefaultSubobject<UExperienceSystem>(TEXT("Experience System"));
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
 	Cannon = CreateDefaultSubobject<UCannonWeaponGear>(TEXT("Cannon"));
 	Shurikens = CreateDefaultSubobject<UShurikensGear>(TEXT("Shurikens"));
@@ -68,8 +71,7 @@ void APlayerPawn::BeginPlay()
 
 	if(HealthComponent)
 	{
-		HealthComponent->MaxHealth = MaxHealth;
-		HealthComponent->Health = MaxHealth;
+		HealthComponent->Health = HealthComponent->MaxHealth;
 
 		if (BaseMaterial && OnDamageMaterial)
 		{
@@ -91,6 +93,7 @@ void APlayerPawn::BeginPlay()
 	PlayerHudui = CreateWidget<UPlayerHUDUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), PlayerHUDUIClass);
 	PlayerHudui->SetReferences(&HealthComponent->Health, &HealthComponent->Shield);
 	PlayerHudui->AddToPlayerScreen();
+
 	//ShieldGear->Shield = 10;
 }
 
@@ -98,6 +101,16 @@ void APlayerPawn::BeginPlay()
 void APlayerPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	TArray<AActor*> OverlappingActors;
+	GetOverlappingActors(OverlappingActors);
+	for (AActor* OverlappingActor : OverlappingActors)
+	{
+		if(OverlappingActor->IsA(AExperienceCrystal::StaticClass()))
+		{
+			ExperienceSystem->AddExp(Cast<AExperienceCrystal>(OverlappingActor)->Experience);
+			OverlappingActor->Destroy();
+		}
+	}
 }
 
 // ****************************************************** INPUT ******************************************************
@@ -149,10 +162,8 @@ float APlayerPawn::GetMaxSpeed()
 	return FloatingPawnMovement->MaxSpeed;
 }
 
-void APlayerPawn::Debug1(const FInputActionValue& Value)
+void APlayerPawn::ShowLevelUpScreen()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 1")));
-
 	if (LevelUpUIClass)
 	{
 		LevelUpUI = CreateWidget<ULevelUpUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), LevelUpUIClass);
@@ -161,16 +172,26 @@ void APlayerPawn::Debug1(const FInputActionValue& Value)
 	}
 }
 
+void APlayerPawn::Die()
+{
+	Destroy();
+}
+
+void APlayerPawn::Debug1(const FInputActionValue& Value)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 1")));
+	ShowLevelUpScreen();
+}
+
 void APlayerPawn::Debug2(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 2")));
-	HealthComponent->ActivateShield();
+	ExperienceSystem->AddExp(1);
 }
 
 void APlayerPawn::Debug3(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 3")));
-	HealthComponent->DeactivateShield();
 }
 
 void APlayerPawn::Debug4(const FInputActionValue& Value)

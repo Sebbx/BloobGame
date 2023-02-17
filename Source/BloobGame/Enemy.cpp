@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "Enemy.h"
 #include "AIController.h"
+#include "ExperienceCrystal.h"
 #include "HealthComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -28,9 +29,8 @@ void AEnemy::BeginPlay()
 
 	if(HealthComponent)
 	{
-		HealthComponent->MaxHealth = MaxHealth;
-		HealthComponent->Health = MaxHealth;
-
+		HealthComponent->Health = HealthComponent->MaxHealth;
+		
 		if (BaseMaterial && OnDamageMaterial)
 		{
 			HealthComponent->BaseMaterial = BaseMaterial;
@@ -70,4 +70,11 @@ void AEnemy::Reload()
 {
 	CanAttack = true;
 	GetWorldTimerManager().ClearTimer(TimerHandle);
+}
+
+void AEnemy::Die()
+{
+	FVector SpawnLoc = GetOwner()->GetActorLocation();
+	if (BloobType == "Bloobe" && BloobeExpCryst) GetWorld()->SpawnActor<AExperienceCrystal>(BloobeExpCryst, SpawnLoc, FRotator::ZeroRotator);
+	Destroy();
 }

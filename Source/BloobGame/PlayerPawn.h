@@ -32,6 +32,9 @@ class BLOOBGAME_API APlayerPawn : public APawn
 
 	UPROPERTY(EditAnywhere, Category = Components)
 	class UCapsuleComponent* CapsuleComponent;
+
+	UPROPERTY(EditAnywhere, Category = Components)
+	class UExperienceSystem* ExperienceSystem;
 	
 	UPROPERTY(EditAnywhere, Category = Meshes)
 	class UStaticMeshComponent* BaseMesh;
@@ -94,11 +97,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere)
-	float MaxHealth = 10;
-
-	UPROPERTY(EditAnywhere)
 	float CollectingRange = 100;
-
 	
 	UPROPERTY(EditAnywhere, Category = Gear)
 	class UShurikensGear* Shurikens;
@@ -107,7 +106,10 @@ public:
 	TArray<FString> EquipmentList;
 
 	void SetMaxSpeed(float NewMaxSpeed);
+	void ShowLevelUpScreen();
+	void Die();
 	float GetMaxSpeed();
+	
 
 protected:
 	// Called when the game starts or when spawned

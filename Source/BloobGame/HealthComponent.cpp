@@ -1,6 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "HealthComponent.h"
 
+#include "Enemy.h"
+#include "PlayerPawn.h"
+
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
 {
@@ -158,7 +161,12 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 		if(Shield > 0) ShieldMeshRef->SetVisibility(true);
 		else ShieldMeshRef->SetVisibility(false);
 	}
-	if(Health <=0) GetOwner()->Destroy();
+
+	if(Health <= 0)
+	{
+		if(GetOwner()->IsA(APlayerPawn::StaticClass())) Cast<APlayerPawn>(GetOwner())->Die();
+		else Cast<AEnemy>(GetOwner())->Die();
+	}
 }
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Insigator, AActor* DamageCauser)

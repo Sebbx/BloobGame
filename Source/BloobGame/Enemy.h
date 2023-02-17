@@ -9,16 +9,9 @@ UCLASS()
 class BLOOBGAME_API AEnemy : public ACharacter
 {
 	GENERATED_BODY()
-	
-	UPROPERTY(EditAnywhere, Category = Components)
-	class UHealthComponent* HealthComponent;
-	
-	class UCapsuleComponent* CapsuleComponent;
-
 public:
 	// Sets default values for this character's properties
 	AEnemy();
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -30,12 +23,21 @@ public:
 	UPROPERTY(EditAnywhere, Category = Meshes)
 	class UStaticMeshComponent* BaseMesh;
 
+	void Die();
+
 private:
+	
+	UPROPERTY(EditAnywhere, Category = Components)
+	class UHealthComponent* HealthComponent;
+
 	UPROPERTY(EditAnywhere, Category = OnDamage)
 	UMaterial* BaseMaterial;
 
 	UPROPERTY(EditAnywhere, Category = OnDamage)
 	UMaterial* OnDamageMaterial;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AExperienceCrystal> BloobeExpCryst;
 	
 	UPROPERTY(EditAnywhere)
 	float AcceptableRadius;
@@ -45,11 +47,11 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float ReloadTime = 2;
-	
+
 	UPROPERTY(EditAnywhere)
-	float MaxHealth = 10;
-
-
+	FString BloobType = "";
+	
+	class UCapsuleComponent* CapsuleComponent;
 	APawn* PlayerPawn;
 	FTimerHandle TimerHandle;
 	bool CanAttack = true;
