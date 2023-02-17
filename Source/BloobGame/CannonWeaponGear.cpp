@@ -147,6 +147,7 @@ void UCannonWeaponGear::Shoot()
 		for (int i = 0; i < NumberOfProjectiles; i++)
 		{
 			ProjectileSpawnRotationOffset.Yaw = (AngleBetweenProjectiles * i) - (AngleBetweenProjectiles * NumberOfProjectiles / 2) + AimYawCorrection;
+			LookAtEnemyRotation.Pitch = 0;
 			GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnLocation, LookAtEnemyRotation + ProjectileSpawnRotationOffset);
 		}
 	}

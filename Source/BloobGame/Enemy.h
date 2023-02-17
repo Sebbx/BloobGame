@@ -37,7 +37,10 @@ private:
 	UMaterial* OnDamageMaterial;
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<class AExperienceCrystal> BloobeExpCryst;
+	TSubclassOf<class AExperienceCrystal> ExpCrClass;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AEnemy> BloobClassToSpawnAfterDeath;
 	
 	UPROPERTY(EditAnywhere)
 	float AcceptableRadius;
@@ -47,6 +50,12 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float ReloadTime = 2;
+
+	UPROPERTY(EditAnywhere)
+	float SpawnDistanceFromCenterAfterDeath = 30;
+
+	UPROPERTY(EditAnywhere)
+	int NumberOfBloobsToSpawnAfterDeath = 0;
 
 	UPROPERTY(EditAnywhere)
 	FString BloobType = "";

@@ -3,6 +3,9 @@
 
 #include "ExperienceCrystal.h"
 
+#include "PlayerPawn.h"
+#include "Kismet/GameplayStatics.h"
+
 
 // Sets default values
 AExperienceCrystal::AExperienceCrystal()
@@ -18,6 +21,8 @@ AExperienceCrystal::AExperienceCrystal()
 void AExperienceCrystal::BeginPlay()
 {
 	RangeCollider->AttachToComponent(RootComponent, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	float CollectingRange = Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->CollectingRange;
+	RangeCollider->SetWorldScale3D(FVector(CollectingRange, CollectingRange, 0.05));
 	Super::BeginPlay();
 }
 

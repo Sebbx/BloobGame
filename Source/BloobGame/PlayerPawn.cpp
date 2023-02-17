@@ -2,6 +2,7 @@
 #include "PlayerPawn.h"
 #include "CannonWeaponGear.h"
 #include "ElectroFieldGear.h"
+#include "Enemy.h"
 #include "LevelUpUI.h"
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputSubsystems.h"
@@ -186,7 +187,6 @@ void APlayerPawn::Debug1(const FInputActionValue& Value)
 void APlayerPawn::Debug2(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 2")));
-	ExperienceSystem->AddExp(1);
 }
 
 void APlayerPawn::Debug3(const FInputActionValue& Value)

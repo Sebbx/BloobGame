@@ -3,6 +3,7 @@
 #include "AIController.h"
 #include "ExperienceCrystal.h"
 #include "HealthComponent.h"
+#include "PlayerPawn.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
@@ -24,6 +25,8 @@ AEnemy::AEnemy()
 void AEnemy::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SpawnDefaultController();
 	
 	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
@@ -46,7 +49,7 @@ void AEnemy::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	
 	AAIController* AIController = Cast<AAIController>(GetController());
-	AIController->MoveToLocation(PlayerPawn->GetActorLocation(), AcceptableRadius);
+	if (AIController )AIController->MoveToLocation(PlayerPawn->GetActorLocation(), AcceptableRadius);
 	
 	HandleAttack();
 }
@@ -62,8 +65,6 @@ void AEnemy::HandleAttack()
 
 		GetWorldTimerManager().SetTimer(TimerHandle, this, &AEnemy::Reload, 1.f, false, ReloadTime);
 	}
-	// Debug
-	//UE_LOG(LogTemp, Warning, TEXT("%f"), Cast<UHealthComponent>( GetComponentByClass(UHealthComponent::StaticClass()))->Health);
 }
 
 void AEnemy::Reload()
@@ -74,7 +75,32 @@ void AEnemy::Reload()
 
 void AEnemy::Die()
 {
-	FVector SpawnLoc = GetOwner()->GetActorLocation();
-	if (BloobType == "Bloobe" && BloobeExpCryst) GetWorld()->SpawnActor<AExperienceCrystal>(BloobeExpCryst, SpawnLoc, FRotator::ZeroRotator);
+	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	
+	FVector ExpSpawnLoc = GetActorLocation();
+	ExpSpawnLoc.Z = 95;
+	if (ExpCrClass) GetWorld()->SpawnActor<AExperienceCrystal>(ExpCrClass, ExpSpawnLoc, FRotator::ZeroRotator);
+	
+	if (NumberOfBloobsToSpawnAfterDeath > 0 && BloobClassToSpawnAfterDeath)
+	{
+		TArray<AEnemy*> SpawnedBloobs;
+		float OffsetAngle = 360 / NumberOfBloobsToSpawnAfterDeath;
+		for (int i = 0; i < NumberOfBloobsToSpawnAfterDeath; i++)
+		{
+			AEnemy *SpawnedBloob = GetWorld()->SpawnActor<AEnemy>(BloobClassToSpawnAfterDeath, GetActorLocation(), FRotator::ZeroRotator);
+			if(SpawnedBloob)
+			{
+				SpawnedBloobs.Add(SpawnedBloob);
+				SpawnedBloob->AddActorWorldRotation(FRotator(0, OffsetAngle * i, 0));
+				SpawnedBloob->AddActorLocalOffset(FVector(SpawnDistanceFromCenterAfterDeath, 0, 0));
+				SpawnedBloob->SetActorEnableCollision(false);
+			}
+		}
+		for (auto SpawnedBloob : SpawnedBloobs)
+		{
+			SpawnedBloob->SetActorEnableCollision(true);
+		}
+	}
+	
 	Destroy();
 }
