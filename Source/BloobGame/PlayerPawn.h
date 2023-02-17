@@ -106,6 +106,9 @@ public:
 	TArray<FString> EquipmentList;
 
 	int ExperienceLevel = 1;
+
+	int* MinutesRef;
+	int* SecondsRef;
 	
 	float GetMaxSpeed();
 	void SetMaxSpeed(float NewMaxSpeed);

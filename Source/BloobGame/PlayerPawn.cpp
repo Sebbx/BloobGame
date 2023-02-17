@@ -94,7 +94,7 @@ void APlayerPawn::BeginPlay()
 	PlayerHudui = CreateWidget<UPlayerHUDUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), PlayerHUDUIClass);
 	PlayerHudui->SetReferences(&HealthComponent->Health, &HealthComponent->Shield, &ExperienceSystem->ExperiencePoints, &ExperienceSystem->ExpToNextLevel, &ExperienceLevel);
 	PlayerHudui->AddToPlayerScreen();
-
+	PlayerHudui->SetLevelTimerReferences(MinutesRef, SecondsRef);
 	//ShieldGear->Shield = 10;
 }
 

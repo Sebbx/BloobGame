@@ -15,6 +15,8 @@ class BLOOBGAME_API UPlayerHUDUI : public UUserWidget
 	GENERATED_BODY()
 
 	bool ReferencesSet = false;
+	int* MinutesRef;
+	int* SecondsRef;
 	int* CurrentLevelRef; 
 	float* HealthPointsRef;
 	float* ShieldPoinsRef;
@@ -34,7 +36,14 @@ public:
 	class UTextBlock* CurrentLevel;
 
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
+	class UTextBlock* MinutesText;
+
+	UPROPERTY(EditAnywhere, meta = (BindWidget))
+	class UTextBlock* SecondsText;
+
+	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	class UProgressBar* ExperienceBar;
 
 	void SetReferences(float *HealthPoints, float *ShieldPoints, float *CurrentXP, float *NextLevelXP, int *Level);
+	void SetLevelTimerReferences(int* Minutes, int* Seconds);
 };

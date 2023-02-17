@@ -9,13 +9,18 @@
 void UPlayerHUDUI::NativeTick(const FGeometry& MyGeometry, float DeltaTime)
 {
 	Super::NativeTick(MyGeometry, DeltaTime);
-	if(ReferencesSet)
+	if(ReferencesSet && MinutesRef != nullptr && SecondsText != nullptr)
 	{
+		float a = 1;
 		HealthPoints->SetText(FText::AsNumber(*HealthPointsRef));
 		ShieldPoints->SetText(FText::AsNumber(*ShieldPoinsRef));
 		ExperienceBar->SetPercent(*CurrentXPRef / *NextLevelXPRef);
 		CurrentLevel->SetText(FText::AsNumber(*CurrentLevelRef));
+		FString MinutesFText = FString::FromInt(*MinutesRef) + ":";
+		MinutesText->SetText(FText::FromString(MinutesFText));
+		SecondsText->SetText(FText::AsNumber(*SecondsRef));
 	}
+	
 }
 
 void UPlayerHUDUI::SetReferences(float* Health, float* Shield, float* CurrentXP, float* NextLevelXP, int *Level)
@@ -26,4 +31,10 @@ void UPlayerHUDUI::SetReferences(float* Health, float* Shield, float* CurrentXP,
 	NextLevelXPRef = NextLevelXP;
 	CurrentLevelRef = Level;
 	ReferencesSet = true;
+}
+
+void UPlayerHUDUI::SetLevelTimerReferences(int* Minutes, int* Seconds)
+{
+	MinutesRef = Minutes;
+	SecondsRef = Seconds;
 }
