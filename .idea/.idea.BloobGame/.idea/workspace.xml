@@ -7,7 +7,14 @@
   <component name="ChangeListManager">
     <list default="true" id="96503929-c297-4145-85ba-5c6fdb9a449e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobar.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobar.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobe.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobox.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_PlayerOne.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_PlayerOne.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Enemy.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Enemy.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,6 +219,7 @@
       <workItem from="1676392493011" duration="597000" />
       <workItem from="1676498338641" duration="5263000" />
       <workItem from="1676554867392" duration="47449000" />
+      <workItem from="1676729700086" duration="2017000" />
     </task>
     <servers />
   </component>

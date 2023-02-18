@@ -27,11 +27,7 @@ void AEnemy::BeginPlay()
 	Super::BeginPlay();
 
 	SpawnDefaultController();
-	if(GetController())
-	{
-		AIController = Cast<AAIController>(GetController());
-	}
-	
+	AIController = Cast<AAIController>(GetController());
 	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
 	if(HealthComponent)
@@ -52,7 +48,12 @@ void AEnemy::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(AIController) AIController->MoveToLocation(PlayerPawn->GetActorLocation(), AcceptableRadius);
+	if(PlayerPawn)
+	{
+		MoveToLocation = PlayerPawn->GetActorLocation();
+	}
+	
+	if(AIController) AIController->MoveToLocation(MoveToLocation, AcceptableRadius, false);
 	
 	HandleAttack();
 }
@@ -78,6 +79,8 @@ void AEnemy::Reload()
 
 void AEnemy::Die()
 {
+	AIController->StopMovement();
+	
 	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	
 	FVector ExpSpawnLoc = GetActorLocation();
@@ -104,6 +107,6 @@ void AEnemy::Die()
 			SpawnedBloob->SetActorEnableCollision(true);
 		}
 	}
-	
+	AIController->StopMovement();
 	Destroy();
 }

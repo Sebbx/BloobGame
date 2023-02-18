@@ -65,6 +65,8 @@ private:
 	APawn* PlayerPawn;
 	FTimerHandle TimerHandle;
 	bool CanAttack = true;
+
+	FVector MoveToLocation = FVector::Zero();
 	
 	void Reload();
 	void HandleAttack();
