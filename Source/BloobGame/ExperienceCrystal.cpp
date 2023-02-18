@@ -24,7 +24,8 @@ void AExperienceCrystal::BeginPlay()
 {
 	RangeCollider->AttachToComponent(RootComponent, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	float CollectingRange = Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->CollectingRange;
-	RangeCollider->SetWorldScale3D(FVector(CollectingRange, CollectingRange, 0.05));
+	RangeCollider->SetWorldScale3D(FVector(CollectingRange, CollectingRange, 0.1));
+	RangeCollider->SetVisibility(ShowRange);
 	Super::BeginPlay();
 }
 

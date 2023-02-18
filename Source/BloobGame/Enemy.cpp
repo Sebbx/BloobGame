@@ -84,7 +84,7 @@ void AEnemy::Die()
 	CapsuleComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	
 	FVector ExpSpawnLoc = GetActorLocation();
-	ExpSpawnLoc.Z = 95;
+	ExpSpawnLoc.Z = 90;
 	if (ExpCrClass) GetWorld()->SpawnActor<AExperienceCrystal>(ExpCrClass, ExpSpawnLoc, FRotator::ZeroRotator);
 	
 	if (NumberOfBloobsToSpawnAfterDeath > 0 && BloobClassToSpawnAfterDeath)

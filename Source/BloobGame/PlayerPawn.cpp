@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "PlayerPawn.h"
 #include "CannonWeaponGear.h"
+#include "DeathScreenUI.h"
 #include "ElectroFieldGear.h"
 #include "Enemy.h"
 #include "LevelUpUI.h"
@@ -167,15 +168,28 @@ void APlayerPawn::ShowLevelUpScreen()
 {
 	if (LevelUpUIClass)
 	{
-		UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 0);
+		UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 0.01);
 		LevelUpUI = CreateWidget<ULevelUpUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), LevelUpUIClass);
 		LevelUpUI->Initialize(this, HealthComponent, Cannon, Shurikens, ElectroField, MovementGear);
 		LevelUpUI->AddToPlayerScreen();
 	}
 }
 
+void APlayerPawn::ShowDeathScreen()
+{
+	if(DeathScreenUIClass)
+	{
+		UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 0.01);
+		auto DeathScreen = CreateWidget<UDeathScreenUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), DeathScreenUIClass);
+		DeathScreen->AddToPlayerScreen();
+	}
+	
+}
+
 void APlayerPawn::Die()
 {
+	ShowDeathScreen();
+	if(HealthComponent->Health <0) HealthComponent->Health = 0;
 	Destroy();
 }
 

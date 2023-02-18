@@ -16,6 +16,9 @@ class BLOOBGAME_API AExperienceCrystal : public AActor
 
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* RangeCollider;
+
+	UPROPERTY(EditAnywhere)
+	bool ShowRange = false;;
 	
 public:	
 	// Sets default values for this actor's properties

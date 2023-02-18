@@ -62,6 +62,9 @@ class BLOOBGAME_API APlayerPawn : public APawn
 
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class ULevelUpUI> LevelUpUIClass;
+
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class UDeathScreenUI> DeathScreenUIClass;
 	
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class UPlayerHUDUI> PlayerHUDUIClass;
@@ -115,6 +118,7 @@ public:
 	float GetMaxSpeed();
 	void SetMaxSpeed(float NewMaxSpeed);
 	void ShowLevelUpScreen();
+	void ShowDeathScreen();
 	void Die();
 
 protected:

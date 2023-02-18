@@ -147,7 +147,7 @@ void UShurikensGear::DeployShurikens()
 		if(ShurikensPivot && Projectile)
 		{
 			Projectile->GetRootComponent()->AttachToComponent(ShurikensPivot, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-			Projectile->AddActorWorldOffset(FVector(DistanceFromPivot, 0, 0));
+			Projectile->AddActorWorldOffset(FVector(DistanceFromPivot, 0, -70));
 			
 			ShurikensPivot->AddLocalRotation(FRotator(0, AngleBetweenEachShuriken, 0));
 

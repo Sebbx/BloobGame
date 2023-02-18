@@ -22,9 +22,9 @@ void UMovementGear::ConstructionForUpgrading()
 	DescriptionsCat1.Add("Movement speed +10");
 	DescriptionsCat1.Add("Movement speed +8");
 
-	DescriptionsCat2.Add("Collecting range +25%");
-	DescriptionsCat2.Add("Collecting range +15%");
-	DescriptionsCat2.Add("Collecting range +7%");
+	DescriptionsCat2.Add("Collecting range +1");
+	DescriptionsCat2.Add("Collecting range +0.5");
+	DescriptionsCat2.Add("Collecting range +0.2");
 }
 
 void UMovementGear::Upgrade()
@@ -71,17 +71,17 @@ void UMovementGear::Upgrade()
 		{
 		case 0:
 			{
-				*CollectingRange += *CollectingRange * 0.25;
+				*CollectingRange += *CollectingRange + 1;
 				LevelCat2++;
 			} break;
 		case 1:
 			{
-				*CollectingRange += *CollectingRange * 0.15;
+				*CollectingRange += *CollectingRange + 0.5;
 				LevelCat2++;
 			} break;
 		case 2:
 			{
-				*CollectingRange += *CollectingRange * 0.07;
+				*CollectingRange += *CollectingRange + 0.2;
 				LevelCat2++;
 				Categories.Remove("2nd");
 			} break;
