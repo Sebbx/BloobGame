@@ -16,6 +16,7 @@ void UDeathScreenUI::NativeConstruct()
 	
 	ButtonTryEgain->OnClicked.AddDynamic(this, &UDeathScreenUI::Button1Clicked);
 	ButtonExit->OnClicked.AddDynamic(this, &UDeathScreenUI::Button2Clicked);
+	
 }
 
 void UDeathScreenUI::Button1Clicked()

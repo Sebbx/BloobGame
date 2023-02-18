@@ -45,6 +45,7 @@ APlayerPawn::APlayerPawn()
 	CameraComponent->SetupAttachment(SpringArmComponent);
 	BaseMesh->SetupAttachment(CapsuleComponent);
 	Shurikens->ShurikensPivot = ShurikensPivot;
+	ShieldMesh->SetupAttachment(BaseMesh);
 
 	EquipmentList.Add("Cannon");
 	EquipmentList.Add("Shurikens");
@@ -58,6 +59,7 @@ APlayerPawn::APlayerPawn()
 void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
+	ShieldMesh->AddLocalOffset(FVector(0, 0, 50));
 	//FloatingPawnMovement->MaxSpeed = 50;
 	ShurikensPivot->AttachToComponent(RootComponent, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	

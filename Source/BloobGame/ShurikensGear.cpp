@@ -45,11 +45,13 @@ void UShurikensGear::Upgrade()
 			case 0:
 				{
 					NumberOfShurikens++;
+					DeployShurikens();
 					LevelCat1++;
 				} break;
 			case 1:
 				{
 					NumberOfShurikens++;
+					DeployShurikens();
 					LevelCat1++;
 				} break;
 			case 2:
@@ -57,6 +59,7 @@ void UShurikensGear::Upgrade()
 					NumberOfShurikens++;
 					RotationSpeed -= RotationSpeed * 0.2;
 					LevelCat1++;
+					DeployShurikens();
 					Categories.Remove("1st");
 				} break;
 				default: break;
@@ -104,9 +107,12 @@ void UShurikensGear::Upgrade()
 			}
 		}
 	}
-	else IsUnlocked = true;
+	else
+	{
+		IsUnlocked = true;
+		DeployShurikens();
+	}
 	if(CheckThatIsFullyUpgraded()) RemoveItemFromEqList("Shurikens");
-	DeployShurikens();
 }
 
 
@@ -136,25 +142,20 @@ void UShurikensGear::TickComponent(float DeltaTime, ELevelTick TickType, FActorC
 
 void UShurikensGear::DeployShurikens()
 {
-	DestroyShurikens();
-	
 	float AngleBetweenEachShuriken = 0;
 	if(NumberOfShurikens > 0) AngleBetweenEachShuriken = 360 / NumberOfShurikens;
 	
-	for (int i = 0; i < NumberOfShurikens; i++)
+	ShurikensPivot->SetWorldRotation(FRotator(0, 0, 0));
+	AShurikenProjectile* Projectile = GetWorld()->SpawnActor<AShurikenProjectile>(ProjectileClass, FVector::ZeroVector, FRotator::ZeroRotator);
+	Projectiles.Add(Projectile);
+	Projectile->GetRootComponent()->AttachToComponent(ShurikensPivot, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	for (auto P : Projectiles)
 	{
-		AShurikenProjectile* Projectile = GetWorld()->SpawnActor<AShurikenProjectile>(ProjectileClass, FVector::ZeroVector, FRotator::ZeroRotator);
-		if(ShurikensPivot && Projectile)
-		{
-			Projectile->GetRootComponent()->AttachToComponent(ShurikensPivot, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-			Projectile->AddActorWorldOffset(FVector(DistanceFromPivot, 0, -70));
-			
-			ShurikensPivot->AddLocalRotation(FRotator(0, AngleBetweenEachShuriken, 0));
-
-			Projectiles.Add(Projectile);
-		}
+		P->SetActorRelativeLocation(FVector(0, 0, 0));
+		ShurikensPivot->AddLocalRotation(FRotator(0, AngleBetweenEachShuriken, 0));
+		P->AddActorWorldOffset(FVector(DistanceFromPivot, 0, 0));
 	}
-	
+	//Projectile->AddActorWorldOffset(FVector(DistanceFromPivot, 0, 0));
 }
 
 void UShurikensGear::DestroyShurikens()
@@ -163,7 +164,7 @@ void UShurikensGear::DestroyShurikens()
 	{
 		for (AShurikenProjectile* Projectile : Projectiles)
 		{
-			Projectile->Destroy();
+			if(Projectile) Cast<AShurikenProjectile>(Projectile)->Destroy();
 		}
 	}
 

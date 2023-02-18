@@ -31,8 +31,11 @@ public:
 private:
 	UPROPERTY(EditAnywhere)
 	float RotationSpeed = 100;
-	
 
 	UFUNCTION()
 	void OnCollisionBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& Hit);
+
+	void Destroyyy();
+
+	bool CanProceed = true;
 };

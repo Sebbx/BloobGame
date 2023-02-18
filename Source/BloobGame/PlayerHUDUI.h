@@ -23,6 +23,10 @@ class BLOOBGAME_API UPlayerHUDUI : public UUserWidget
 	float* CurrentXPRef;
 	float* NextLevelXPRef;
 
+	
+	UPROPERTY(EditAnywhere, Category = UI)
+	TSubclassOf<class UUserWidget> VictoryUIClass;
+
 public:
 	virtual void NativeTick(const FGeometry& MyGeometry, float DeltaTime) override;
 	

@@ -5,6 +5,7 @@
 
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
+#include "Kismet/GameplayStatics.h"
 
 void UPlayerHUDUI::NativeTick(const FGeometry& MyGeometry, float DeltaTime)
 {
@@ -20,7 +21,13 @@ void UPlayerHUDUI::NativeTick(const FGeometry& MyGeometry, float DeltaTime)
 		MinutesText->SetText(FText::FromString(MinutesFText));
 		SecondsText->SetText(FText::AsNumber(*SecondsRef));
 	}
-	
+
+	if(*MinutesRef >= 15 && VictoryUIClass)
+	{
+		UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 0.01);
+		auto VictoryUI = CreateWidget<UUserWidget>(UGameplayStatics::GetPlayerController(GetWorld(), 0), VictoryUIClass);
+		VictoryUI->AddToPlayerScreen();
+	}
 }
 
 void UPlayerHUDUI::SetReferences(float* Health, float* Shield, float* CurrentXP, float* NextLevelXP, int *Level)

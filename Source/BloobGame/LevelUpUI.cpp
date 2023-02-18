@@ -55,7 +55,6 @@ void ULevelUpUI::DrawItemsForPanels()
 	if(!AvailableItems.IsEmpty())
 	{
 		Panel1Item = AvailableItems[FMath::RandRange(0, AvailableItems.Num() - 1)];
-		if(AvailableItems.Contains("Movement")) Panel1Item = "Movement"; // TESTING ONLY
 		AvailableItems.Remove(Panel1Item);
 	}
 

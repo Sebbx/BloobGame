@@ -23,7 +23,6 @@ AShurikenProjectile::AShurikenProjectile()
 void AShurikenProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	Damage = Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->Shurikens->Damage;
 
 	if (BaseMesh)
 	{
@@ -34,13 +33,26 @@ void AShurikenProjectile::BeginPlay()
 // Called every frame
 void AShurikenProjectile::Tick(float DeltaTime)
 {
+	Damage = Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->Shurikens->Damage;
 	Super::Tick(DeltaTime);
-	AddActorLocalRotation(FRotator(0, RotationSpeed * DeltaTime, 0));
+	if (CanProceed)AddActorLocalRotation(FRotator(0, RotationSpeed * DeltaTime, 0));
 }
 
 void AShurikenProjectile::OnCollisionBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& Hit)
 {
-	const auto DamageTypeClass = UDamageType::StaticClass();
-	UGameplayStatics::ApplyDamage(OtherActor, Damage, GetInstigatorController(), this, DamageTypeClass);
+		if (CanProceed)
+		{
+			const auto DamageTypeClass = UDamageType::StaticClass();
+			UGameplayStatics::ApplyDamage(OtherActor, Damage, GetInstigatorController(), this, DamageTypeClass);
+		}
+}
+
+void AShurikenProjectile::Destroyyy()
+{
+	if (!IsPendingKill())
+	{
+		CanProceed = false;
+		if (IsValid(this))Destroy();
+	}
 }
 
