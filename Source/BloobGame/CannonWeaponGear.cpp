@@ -22,17 +22,17 @@ void UCannonWeaponGear::ConstructionForUpgrading()
 	Categories.Add("2nd");
 	Categories.Add("3rd");
 	
-	DescriptionsCat1.Add("Penetration +1");
 	DescriptionsCat1.Add("Penetration +1, Firerate -15%");
-	DescriptionsCat1.Add("Penetration +1, Spread +10%");
+	DescriptionsCat1.Add("Penetration +1, Firerate -15%");
+	DescriptionsCat1.Add("Penetration +1, Firerate -15%");
 
-	DescriptionsCat2.Add("Bullet +1");
-	DescriptionsCat2.Add("Bullet +1, Firerate -15% ,Spread +10%");
-	DescriptionsCat2.Add("Bullet +1, Firerate -15%");
+	DescriptionsCat2.Add("Bullet +1, Firerate -25%, Spread +20%");
+	DescriptionsCat2.Add("Bullet +1, Firerate -25%, Spread +17%");
+	DescriptionsCat2.Add("Bullet +1, Firerate -20%, Spread +15%");
 
 	DescriptionsCat3.Add("Firerate +30%");
-	DescriptionsCat3.Add("Firerate +20%");
-	DescriptionsCat3.Add("Firerate +10%, Spread -35%");
+	DescriptionsCat3.Add("Firerate +25%");
+	DescriptionsCat3.Add("Firerate +15%, Spread -35%");
 	
 }
 
@@ -46,6 +46,7 @@ void UCannonWeaponGear::Upgrade()
 			{
 			case 0:
 				{
+					FireRate += FireRate * 0.15;
 					Penetration++;
 					LevelCat1++;
 				} break;
@@ -61,6 +62,7 @@ void UCannonWeaponGear::Upgrade()
 				{	
 					Penetration++;
 					AngleBetweenProjectiles += AngleBetweenProjectiles * 0.1;
+					FireRate += FireRate * 0.15;
 					LevelCat1++;
 					Categories.Remove("1st");
 				} break;
@@ -74,19 +76,22 @@ void UCannonWeaponGear::Upgrade()
 			case 0:
 				{
 					NumberOfProjectiles++;
+					FireRate += FireRate * 0.25;
+					AngleBetweenProjectiles += AngleBetweenProjectiles * 0.2;
 					LevelCat2++;
 				} break;
 			case 1:
 				{
 					NumberOfProjectiles++;
-					AngleBetweenProjectiles += AngleBetweenProjectiles * 0.1;
-					FireRate += FireRate * 0.15;
+					AngleBetweenProjectiles += AngleBetweenProjectiles * 0.17;
+					FireRate += FireRate * 0.25;
 					LevelCat2++;
 				} break;
 			case 2:
 				{
 					NumberOfProjectiles++;
-					FireRate += FireRate * 0.15;
+					FireRate += FireRate * 0.20;
+					AngleBetweenProjectiles += AngleBetweenProjectiles * 0.15;
 					LevelCat2++;
 					Categories.Remove("2nd");
 				} break;
@@ -104,12 +109,12 @@ void UCannonWeaponGear::Upgrade()
 				} break;
 			case 1:
 				{
-					FireRate -= FireRate * 0.20;
+					FireRate -= FireRate * 0.25;
 					LevelCat3++;
 				} break;
 			case 2:
 				{
-					FireRate -= FireRate * 0.10;
+					FireRate -= FireRate * 0.15;
 					AngleBetweenProjectiles -= AngleBetweenProjectiles * 0.35;
 					LevelCat3++;
 					Categories.Remove("3rd");

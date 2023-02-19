@@ -18,17 +18,17 @@ void UElectroFieldGear::ConstructionForUpgrading()
 	Categories.Add("2nd");
 	Categories.Add("3rd");
 
-	DescriptionsCat1.Add("Radius +10%");
-	DescriptionsCat1.Add("Radius +25%, Discharge rate -60%");
-	DescriptionsCat1.Add("Radius +5%");
+	DescriptionsCat1.Add("Radius +20%");
+	DescriptionsCat1.Add("Radius +25%, Discharge rate -35%");
+	DescriptionsCat1.Add("Radius +12%");
 
-	DescriptionsCat2.Add("Duration of the Electro Field + 0.4s");
-	DescriptionsCat2.Add("Duration of the Electro Field + 0.3s");
-	DescriptionsCat2.Add("Duration of the Electro Field + 0.5s");
+	DescriptionsCat2.Add("Duration of the Electro Field + 0.7s");
+	DescriptionsCat2.Add("Duration of the Electro Field + 0.7s");
+	DescriptionsCat2.Add("Duration of the Electro Field + 0.1s");
 
-	DescriptionsCat3.Add("Damage + 5%");
-	DescriptionsCat3.Add("Damage + 3%");
-	DescriptionsCat3.Add("Damage + 7%, Discharge rate +5%");
+	DescriptionsCat3.Add("Damage + 15%");
+	DescriptionsCat3.Add("Damage + 15%");
+	DescriptionsCat3.Add("Damage + 15%, Discharge rate +20%");
 }
 
 void UElectroFieldGear::Upgrade()
@@ -41,20 +41,20 @@ void UElectroFieldGear::Upgrade()
 			{
 			case 0:
 				{
-					TargetScale += TargetScale * 0.1;
+					TargetScale += TargetScale * 0.20;
 					LevelCat1++;
 				} break;
 				
 			case 1:
 				{
-					TargetScale += TargetScale * 0.1;
-					DischargeRate += DischargeRate * 0.6;
+					TargetScale += TargetScale * 0.25;
+					DischargeRate += DischargeRate * 0.35;
 					LevelCat1++;
 				} break;
 				
 			case 2:
 				{
-					TargetScale += TargetScale * 0.05;
+					TargetScale += TargetScale * 0.12;
 					LevelCat1++;
 					Categories.Remove("1st");
 				} break;
@@ -68,19 +68,19 @@ void UElectroFieldGear::Upgrade()
 			{
 			case 0:
 				{
-					Duration += 0.4;
+					Duration += 0.7;
 					LevelCat2++;
 				} break;
 				
 			case 1:
 				{
-					Duration += 0.3;
+					Duration += 0.7;
 					LevelCat2++;
 				} break;
 				
 			case 2:
 				{
-					Duration += 0.5;
+					Duration += 1;
 					LevelCat2++;
 					Categories.Remove("2nd");
 				} break;
@@ -94,20 +94,20 @@ void UElectroFieldGear::Upgrade()
 			{
 			case 0:
 				{
-					Damage += Damage * 0.05;
+					Damage += Damage * 0.15;
 					LevelCat3++;
 				} break;
 				
 			case 1:
 				{
-					Damage += Damage * 0.03;
+					Damage += Damage * 0.15;
 					LevelCat3++;
 				} break;
 				
 			case 2:
 				{
-					Damage += Damage * 0.07;
-					DischargeRate -= DischargeRate * 0.05;
+					Damage += Damage * 0.15;
+					DischargeRate -= DischargeRate * 0.2;
 					LevelCat3++;
 					Categories.Remove("3rd");
 				} break;

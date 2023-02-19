@@ -27,6 +27,9 @@ class BLOOBGAME_API UPlayerHUDUI : public UUserWidget
 	UPROPERTY(EditAnywhere, Category = UI)
 	TSubclassOf<class UUserWidget> VictoryUIClass;
 
+	UPROPERTY(EditAnywhere)
+	float TimeToVictory = 20;
+
 public:
 	virtual void NativeTick(const FGeometry& MyGeometry, float DeltaTime) override;
 	

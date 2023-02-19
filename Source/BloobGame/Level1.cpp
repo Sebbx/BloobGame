@@ -26,10 +26,12 @@ void ALevel1::BeginPlay()
 	PlayerRef->SecondsRef = &Seconds;
 	PlayerRef->TimeDilation = &InitialTimeDilation;
 	Super::BeginPlay();
-	
-	GetWorld()->GetTimerManager().SetTimer(LevelTimerHandle, this, &ALevel1::StartLevelTimer, LevelTimerRate, true, 1);
-	GetWorld()->GetTimerManager().SetTimer(BloobeSpawnTimerHandle, this, &ALevel1::StartBloobeSpawnTimer, BloobeSpawnTimerRate, true, 0);
 
+	if(CanSpawn)
+	{
+		GetWorld()->GetTimerManager().SetTimer(LevelTimerHandle, this, &ALevel1::StartLevelTimer, LevelTimerRate, true, 1);
+		GetWorld()->GetTimerManager().SetTimer(BloobeSpawnTimerHandle, this, &ALevel1::StartBloobeSpawnTimer, BloobeSpawnTimerRate, true, 0);
+	}
 	UGameplayStatics::SetGlobalTimeDilation(GetWorld(), InitialTimeDilation);
 }
 

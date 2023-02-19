@@ -54,7 +54,16 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float SpawnDistanceFromCenterAfterDeath = 30;
+	
+	UPROPERTY(EditAnywhere)
+	float SwapDistance = 3500;
 
+	UPROPERTY(EditAnywhere)
+	float SwapMultiplier = 0.95;
+	
+	UPROPERTY(EditAnywhere)
+	float SwapHeight = 100;
+	
 	UPROPERTY(EditAnywhere)
 	int NumberOfBloobsToSpawnAfterDeath = 0;
 

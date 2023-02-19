@@ -33,7 +33,7 @@ void AShurikenProjectile::BeginPlay()
 // Called every frame
 void AShurikenProjectile::Tick(float DeltaTime)
 {
-	Damage = Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->Shurikens->Damage;
+	if(UGameplayStatics::GetPlayerPawn(GetWorld(), 0)) Damage = Cast<APlayerPawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0))->Shurikens->Damage;
 	Super::Tick(DeltaTime);
 	if (CanProceed)AddActorLocalRotation(FRotator(0, RotationSpeed * DeltaTime, 0));
 }

@@ -22,7 +22,7 @@ void UPlayerHUDUI::NativeTick(const FGeometry& MyGeometry, float DeltaTime)
 		SecondsText->SetText(FText::AsNumber(*SecondsRef));
 	}
 
-	if(*MinutesRef >= 15 && VictoryUIClass)
+	if(*MinutesRef >= TimeToVictory && VictoryUIClass)
 	{
 		UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 0.01);
 		auto VictoryUI = CreateWidget<UUserWidget>(UGameplayStatics::GetPlayerController(GetWorld(), 0), VictoryUIClass);

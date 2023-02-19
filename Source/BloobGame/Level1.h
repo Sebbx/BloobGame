@@ -73,6 +73,9 @@ class BLOOBGAME_API ALevel1 : public ALevelScriptActor
 	void StartBlooboxSpawnTimer();
 	void SpawnEnemy(TSubclassOf<AEnemy> EnemyBP);
 
+	UPROPERTY(EditAnywhere)
+	bool CanSpawn = true;
+
 public:
 	ALevel1();
 	// Called every frame

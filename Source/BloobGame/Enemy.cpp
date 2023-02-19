@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
+#include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -55,7 +56,16 @@ void AEnemy::Tick(float DeltaTime)
 	
 	if(AIController) AIController->MoveToLocation(MoveToLocation, AcceptableRadius, false);
 	
-	HandleAttack();
+	HandleAttack();	
+	
+	if(GetDistanceTo(PlayerPawn) > SwapDistance)
+	{
+		FVector Loc = UKismetMathLibrary::GetDirectionUnitVector(GetActorLocation(), PlayerPawn->GetActorLocation());
+		Loc = Loc * GetDistanceTo(PlayerPawn);
+		FVector NewLoc = PlayerPawn->GetActorLocation() + Loc * SwapMultiplier;
+		NewLoc.Z = SwapHeight;
+		SetActorLocation(NewLoc);
+	}
 }
 
 void AEnemy::HandleAttack()
