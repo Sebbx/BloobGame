@@ -70,7 +70,7 @@ public:
 	void Button3Clicked();
 	void ClearLevelUpMenu();
 	
-	void Initialize(APlayerPawn* PlayerPawn, UHealthComponent* HealthComponent, UCannonWeaponGear* CannonWeaponGear, UShurikensGear* ShurikensGear, UElectroFieldGear* ElectroFieldGear, UMovementGear* MovementGear);
+	void InitializeReferences(APlayerPawn* PlayerPawn, UHealthComponent* HealthComponent, UCannonWeaponGear* CannonWeaponGear, UShurikensGear* ShurikensGear, UElectroFieldGear* ElectroFieldGear, UMovementGear* MovementGear);
 	void DrawItemsForPanels();
 	void DrawUpgradeCategories();
 	

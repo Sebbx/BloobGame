@@ -7,22 +7,27 @@
   <component name="ChangeListManager">
     <list default="true" id="96503929-c297-4145-85ba-5c6fdb9a449e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_PlayerOne.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_PlayerOne.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Level1.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloobGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/BloobGame.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/MainMenu.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Shapes/Shape_Cone.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Shapes/Shape_Cone.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/BP_DeathScreenUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_DeathScreenUI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/BP_LevelUpUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_LevelUpUI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/BP_MainMenuUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_MainMenuUI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/BP_PlayerHUDUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_PlayerHUDUI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/BP_VictoryUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_VictoryUI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/D/FA/1H6ZXXEIHQR56STQ5S1GLU.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/D/FA/1H6ZXXEIHQR56STQ5S1GLU.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/E/6Z/M7Y6Q7MZ0ELO8I6HWF1MJR.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/F/2Z/K16EN558J8VRSNEBHL6DH1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/F/2Z/K16EN558J8VRSNEBHL6DH1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor.modules" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor.modules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RD/Default.rc2.res" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RD/Default.rc2.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RD/Default.rc2.res.response" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RD/Default.rc2.res.response" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderBlueprint/Default.rc2.res" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderBlueprint/Default.rc2.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderBlueprint/Default.rc2.res.response" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderBlueprint/Default.rc2.res.response" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderGameControl/Default.rc2.res" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderGameControl/Default.rc2.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderGameControl/Default.rc2.res.response" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderGameControl/Default.rc2.res.response" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderLink/Default.rc2.res" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderLink/Default.rc2.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderLink/Default.rc2.res.response" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderLink/Default.rc2.res.response" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderLogging/Default.rc2.res" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderLogging/Default.rc2.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderLogging/Default.rc2.res.response" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderLogging/Default.rc2.res.response" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/Default.rc2.res" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/Default.rc2.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/Default.rc2.res.response" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/Default.rc2.res.response" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +40,7 @@
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="SWEA" />
   </component>
   <component name="ProjectId" id="2KKR89GUyJPkAsj1sOXNXSoZzSF" />
   <component name="ProjectViewState">
@@ -231,6 +236,7 @@
       <workItem from="1676729700086" duration="19914000" />
       <workItem from="1676822428215" duration="7856000" />
       <workItem from="1676938005702" duration="4669000" />
+      <workItem from="1677694168685" duration="564000" />
     </task>
     <servers />
   </component>

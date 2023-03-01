@@ -172,7 +172,7 @@ void APlayerPawn::ShowLevelUpScreen()
 	{
 		UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 0.01);
 		LevelUpUI = CreateWidget<ULevelUpUI>(UGameplayStatics::GetPlayerController(GetWorld(), 0), LevelUpUIClass);
-		LevelUpUI->Initialize(this, HealthComponent, Cannon, Shurikens, ElectroField, MovementGear);
+		LevelUpUI->InitializeReferences(this, HealthComponent, Cannon, Shurikens, ElectroField, MovementGear);
 		LevelUpUI->AddToPlayerScreen();
 	}
 }

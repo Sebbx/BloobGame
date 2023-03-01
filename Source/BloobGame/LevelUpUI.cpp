@@ -9,7 +9,7 @@
 #include "Components/TextBlock.h"
 #include "Kismet/GameplayStatics.h"
 
-void ULevelUpUI::Initialize(APlayerPawn* PlayerPawn, UHealthComponent* HealthComponent, UCannonWeaponGear* CannonWeaponGear, UShurikensGear* ShurikensGear, UElectroFieldGear* ElectroFieldGear, UMovementGear* MovementGear)
+void ULevelUpUI::InitializeReferences(APlayerPawn* PlayerPawn, UHealthComponent* HealthComponent, UCannonWeaponGear* CannonWeaponGear, UShurikensGear* ShurikensGear, UElectroFieldGear* ElectroFieldGear, UMovementGear* MovementGear)
 {
 	PlayerPawnRef = PlayerPawn;
 	HealthComponentRef = HealthComponent;
