@@ -7,26 +7,23 @@
   <component name="ChangeListManager">
     <list default="true" id="96503929-c297-4145-85ba-5c6fdb9a449e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BloobGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobar.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobar.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobox.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Bloobox.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_PlayerOne.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_PlayerOne.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Level1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Level1.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/MainMenu.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Architecture/Floor_400x400.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Shapes/Shape_Cone.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Shapes/Shape_Cone.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/BP_DeathScreenUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_DeathScreenUI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/BP_LevelUpUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_LevelUpUI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/BP_MainMenuUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_MainMenuUI.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/BP_PlayerHUDUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_PlayerHUDUI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/2/MK/EZG4RSJ2TWW0VJYB3Q9I9I.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/2/MK/EZG4RSJ2TWW0VJYB3Q9I9I.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/BP_VictoryUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/BP_VictoryUI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/D/FA/1H6ZXXEIHQR56STQ5S1GLU.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/D/FA/1H6ZXXEIHQR56STQ5S1GLU.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/E/6Z/M7Y6Q7MZ0ELO8I6HWF1MJR.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/F/2Z/K16EN558J8VRSNEBHL6DH1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Levels/Level1/F/2Z/K16EN558J8VRSNEBHL6DH1.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/CannonWeaponGear.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/ElectroFieldGear.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/ElectroFieldGear.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Enemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Enemy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Enemy.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Level1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Level1.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/Level1.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/Level1.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerHUDUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerHUDUI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerHUDUI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerHUDUI.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BloobGame/ShurikenProjectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/ShurikenProjectile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/LevelUpUI.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BloobGame/PlayerPawn.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,6 +230,7 @@
       <workItem from="1676554867392" duration="47449000" />
       <workItem from="1676729700086" duration="19914000" />
       <workItem from="1676822428215" duration="7856000" />
+      <workItem from="1676938005702" duration="4669000" />
     </task>
     <servers />
   </component>

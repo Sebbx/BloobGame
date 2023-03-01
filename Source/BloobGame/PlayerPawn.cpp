@@ -214,9 +214,11 @@ void APlayerPawn::Debug3(const FInputActionValue& Value)
 void APlayerPawn::Debug4(const FInputActionValue& Value)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 4")));
+	UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 1);
 }
 
 void APlayerPawn::Debug5(const FInputActionValue& Value)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Orange, (TEXT("Debug 5")));
+	UGameplayStatics::SetGlobalTimeDilation(GetWorld(), UGameplayStatics::GetGlobalTimeDilation(GetWorld()) + 0.5 );
+	UE_LOG(LogTemp, Warning, TEXT("Time Dilation set to: %f"), UGameplayStatics::GetGlobalTimeDilation(GetWorld()));
 }

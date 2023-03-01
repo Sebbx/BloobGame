@@ -119,7 +119,8 @@ void ULevelUpUI::Button1Clicked()
 	{
 		UpgradeItem(Panel1Item);
 		ClearLevelUpMenu();
-	}	
+	}
+	else ClearLevelUpMenu();
 }
 
 void ULevelUpUI::Button2Clicked()
